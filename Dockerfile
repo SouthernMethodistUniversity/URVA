@@ -3,7 +3,7 @@
 # docker run -it --entrypoint /bin/bash purva:latest
 # docker save -o ~/Downloads/lasso.tar purva:latest
 
-FROM --platform=linux/amd64 python:2.7.18-slim-buster
+FROM --platform=linux/amd64 python:3.8.18-slim-bookworm
 
 COPY requirements.txt /
 RUN pip install -r /requirements.txt &&\
