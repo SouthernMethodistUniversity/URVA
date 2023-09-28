@@ -1443,7 +1443,7 @@ def calU(pID,bID,Brlist,parB):
     #print b
     tmp1=[]
     for i in range(len(b)):
-        j = i / 3
+        j = int(i / 3)
         tmp1.append( b[i] * Vmass[j]**(-0.5) )   #G**(-0.5) )
 
     u = np.array(tmp1)
@@ -1468,7 +1468,7 @@ def calG(pID,bID,Brlist,parB):
     b = makB(Natom,pID,bID,parB)
     tmp1=[]
     for i in range(len(b)):
-        j = i / 3
+        j = int(i / 3)
         tmp1.append( b[i] / Vmass[j] )
     tmp1 = np.array(tmp1)
     b = np.array(b)
@@ -1567,7 +1567,7 @@ def dircur(Brlist):
         NAt3 = 3* Brlist[0].NAtom
         eta = []
         for j in range( NAt3 ):
-            k = j / 3
+            k = int(j / 3)
             tmp1 = Brlist[i].Vgrad[j] *  (Brlist[i].Vmass[k])**(-0.5)
             eta.append (tmp1)
         eta = np.array(eta)
@@ -1578,8 +1578,8 @@ def dircur(Brlist):
         mwhess = LT2Sqr( NAt3 , Brlist[i].Vhess )
         for j in range(NAt3):
             for k in range(NAt3):
-                jm = j / 3
-                km = k / 3
+                jm = int(j / 3)
+                km = int(k / 3)
                 mwhess[j][k] = mwhess[j][k] /( (Brlist[i].Vmass[jm])**0.5 *  (Brlist[i].Vmass[km])**0.5 )
 
         mwhess = np.matrix( mwhess )
@@ -1605,8 +1605,8 @@ def solWilsProj(Vcoor,Vhess,Vmass,Proj):
     mwhess = LT2Sqr( 3*NAtom, Vhess)
     for j in range(NAt3):
         for k in range(NAt3):
-            jm = j / 3
-            km = k / 3
+            jm = int(j / 3)
+            km = int(k / 3)
             mwhess[j][k] = mwhess[j][k] /\
             ( (Vmass[jm])**0.5 *  (Vmass[km])**0.5 )
 
@@ -1644,7 +1644,7 @@ def solWilsProj(Vcoor,Vhess,Vmass,Proj):
     for i in range(len(NModes)):
         v = copy.deepcopy( NModes[i] )
         for j in range(NAt3):
-            jm = j / 3
+            jm = int(j / 3)
             v[j] = v[j] / (Vmass[jm]**0.5)
         vnorm = np.linalg.norm(v)
         CartDisp.append( (v/vnorm).tolist() )
@@ -1677,8 +1677,8 @@ def solWils(Vcoor,Vhess,Vmass):
     ek,vk = np.linalg.eig(mwhess)
     for j in range(NAt3):
         for k in range(NAt3):
-            jm = j / 3
-            km = k / 3
+            jm = int(j / 3)
+            km = int(k / 3)
             mwhess[j][k] = mwhess[j][k] /\
             ( (Vmass[jm])**0.5 *  (Vmass[km])**0.5 )
 
@@ -1714,7 +1714,7 @@ def solWils(Vcoor,Vhess,Vmass):
     for i in range(len(NModes)):
         v = copy.deepcopy( NModes[i] )
         for j in range(NAt3):
-            jm = j / 3
+            jm = int(j / 3)
             v[j] = v[j] / (Vmass[jm]**0.5)
         vnorm = np.linalg.norm(v)
         CartDisp.append( (v/vnorm).tolist() )
@@ -2191,8 +2191,8 @@ def CalKdK(natom,AtMass,FFX,P,dP):
     # we need mass-weighting for FFXMw
     for j in range(nat3):
         for k in range(nat3):
-            jm = j / 3
-            km = k / 3
+            jm = int(j / 3)
+            km = int(k / 3)
             FFXMw[j][k] = FFXMw[j][k] /\
                           ( (AtMass[jm])**0.5 * (AtMass[km])**0.5 )
 
@@ -2411,7 +2411,7 @@ def calcoriolis( DX, AtMass, kappa, eta, FFX, CC,s):
 #    for i in range(len(DXun)):
 #       v = copy.deepcopy( DXun[i] )
 #       for j in range(nat3):
-#           jm = j / 3
+#           jm = int(j / 3)
 #           v[j] = v[j] / (AtMass[jm]**0.5)
 #       vnorm = np.linalg.norm(v)
 #       DX.append( (v/vnorm).tolist() )
