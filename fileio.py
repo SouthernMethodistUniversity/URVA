@@ -482,25 +482,25 @@ def rdNB(filename,newBrowslist):
                 if irdC == 1:
                     if pcoor < natom:
                         #print i
-                        fields = parse(i)
+                        fields = parse(i.encode())
                         #print format(fields)
                         tmp2=[]
-                        tmp2.append( float( format(fields)[ 2:24] ) )
-                        tmp2.append( float( format(fields)[28:50] ) )
-                        tmp2.append( float( format(fields)[54:76] ) )
+                        tmp2.append( float( fields[0].decode() ) )
+                        tmp2.append( float( fields[1].decode() ) )
+                        tmp2.append( float( fields[2].decode() ) )
                         #print tmp2
                         tmpcoor.append(tmp2)
                         pcoor = pcoor + 1
                     else:
                         #print i
-                        fields = parse(i)
+                        fields = parse(i.encode())
                         #print format(fields)
                         #tmp2=list(format(fields))
                         #newBrowslist[ct].Vcoor = tmpcoor
                         tmp2=[]
-                        tmp2.append( float( format(fields)[ 2:24] ) )
-                        tmp2.append( float( format(fields)[28:50] ) )
-                        tmp2.append( float( format(fields)[54:76] ) )
+                        tmp2.append( float( fields[0].decode() ) )
+                        tmp2.append( float( fields[1].decode() ) )
+                        tmp2.append( float( fields[2].decode() ) )
                         #print tmp2
                         tmpcoor.append(tmp2)
                         newBrowslist[ct].Vcoor = tmpcoor
@@ -515,19 +515,19 @@ def rdNB(filename,newBrowslist):
                     continue
                 if irdD == 1:
                     if peta < natom:
-                        fields = parse(i)
+                        fields = parse(i.encode())
                         tmp3=[]
-                        tmp3.append( float( format(fields)[ 2:24] ) )
-                        tmp3.append( float( format(fields)[28:50] ) )
-                        tmp3.append( float( format(fields)[54:76] ) )
+                        tmp3.append( float( fields[0].decode() ) )
+                        tmp3.append( float( fields[1].decode() ) )
+                        tmp3.append( float( fields[2].decode() ) )
                         tmpeta.append(tmp3)
                         peta = peta + 1
                     else:
-                        fields = parse(i)
+                        fields = parse(i.encode())
                         tmp3=[]
-                        tmp3.append( float( format(fields)[ 2:24] ) )
-                        tmp3.append( float( format(fields)[28:50] ) )
-                        tmp3.append( float( format(fields)[54:76] ) )
+                        tmp3.append( float( fields[0].decode() ) )
+                        tmp3.append( float( fields[1].decode() ) )
+                        tmp3.append( float( fields[2].decode() ) )
                         tmpeta.append(tmp3)
                         newBrowslist[ct].Veta = tmpeta
                         irdD = 0
@@ -540,19 +540,19 @@ def rdNB(filename,newBrowslist):
                     continue
                 if irdE == 1:
                     if pkap < natom:
-                        fields = parse(i)
+                        fields = parse(i.encode())
                         tmp4=[]
-                        tmp4.append( float( format(fields)[ 2:24] ) )
-                        tmp4.append( float( format(fields)[28:50] ) )
-                        tmp4.append( float( format(fields)[54:76] ) )
+                        tmp4.append( float( fields[0].decode() ) )
+                        tmp4.append( float( fields[1].decode() ) )
+                        tmp4.append( float( fields[2].decode() ) )
                         tmpkap.append(tmp4)
                         pkap = pkap + 1
                     else:
-                        fields = parse(i)
+                        fields = parse(i.encode())
                         tmp4=[]
-                        tmp4.append( float( format(fields)[ 2:24] ) )
-                        tmp4.append( float( format(fields)[28:50] ) )
-                        tmp4.append( float( format(fields)[54:76] ) )
+                        tmp4.append( float( fields[0].decode() ) )
+                        tmp4.append( float( fields[1].decode() ) )
+                        tmp4.append( float( fields[2].decode() ) )
                         tmpkap.append(tmp4)
                         newBrowslist[ct].Vkappa = tmpkap
                         irdE = 0
@@ -651,25 +651,25 @@ def rdOB(filename,oldBrowslist):
                 if irdC == 1:
                     if pcoor < natom:
                     #print i
-                        fields = parse(i)
-                        #print format(fields)
+                        fields = parse(i.encode())
+                        #print(fields)
                         tmp2=[]
-                        tmp2.append( float( format(fields)[ 2:24] ) )
-                        tmp2.append( float( format(fields)[28:50] ) )
-                        tmp2.append( float( format(fields)[54:76] ) )
+                        tmp2.append( float( fields[0].decode() ) )
+                        tmp2.append( float( fields[1].decode() ) )
+                        tmp2.append( float( fields[2].decode() ) )
                         #print tmp2
                         tmpcoor.append(tmp2)
                         pcoor = pcoor + 1
                     else:
                         #print i
-                        fields = parse(i)
+                        fields = parse(i.encode())
                         #print format(fields)
                         #tmp2=list(format(fields))
                         #newBrowslist[ct].Vcoor = tmpcoor
                         tmp2=[]
-                        tmp2.append( float( format(fields)[ 2:24] ) )
-                        tmp2.append( float( format(fields)[28:50] ) )
-                        tmp2.append( float( format(fields)[54:76] ) )
+                        tmp2.append( float( fields[0].decode() ) )
+                        tmp2.append( float( fields[1].decode() ) )
+                        tmp2.append( float( fields[2].decode() ) )
                         #print tmp2
                         tmpcoor.append(tmp2)
                         oldBrowslist[ct].Vcoor = tmpcoor
@@ -684,19 +684,19 @@ def rdOB(filename,oldBrowslist):
                     continue
                 if irdD == 1:
                     if peta < natom:
-                        fields = parse(i)
+                        fields = parse(i.encode())
                         tmp3=[]
-                        tmp3.append( float( format(fields)[ 2:24] ) )
-                        tmp3.append( float( format(fields)[28:50] ) )
-                        tmp3.append( float( format(fields)[54:76] ) )
+                        tmp3.append( float( fields[0].decode() ) )
+                        tmp3.append( float( fields[1].decode() ) )
+                        tmp3.append( float( fields[2].decode() ) )
                         tmpeta.append(tmp3)
                         peta = peta + 1
                     else:
-                        fields = parse(i)
+                        fields = parse(i.encode())
                         tmp3=[]
-                        tmp3.append( float( format(fields)[ 2:24] ) )
-                        tmp3.append( float( format(fields)[28:50] ) )
-                        tmp3.append( float( format(fields)[54:76] ) )
+                        tmp3.append( float( fields[0].decode() ) )
+                        tmp3.append( float( fields[1].decode() ) )
+                        tmp3.append( float( fields[2].decode() ) )
                         tmpeta.append(tmp3)
                         tmpeta = [item for sublist in tmpeta for item in sublist]
 
@@ -712,19 +712,19 @@ def rdOB(filename,oldBrowslist):
                     continue
                 if irdE == 1:
                     if pkap < nrowhess: # corrected
-                        fields = parse(i)
+                        fields = parse(i.encode())
                         tmp4=[]
-                        tmp4.append( float( format(fields)[ 2:24] ) )
-                        tmp4.append( float( format(fields)[28:50] ) )
-                        tmp4.append( float( format(fields)[54:76] ) )
+                        tmp4.append( float( fields[0].decode() ) )
+                        tmp4.append( float( fields[1].decode() ) )
+                        tmp4.append( float( fields[2].decode() ) )
                         tmpkap.append(tmp4)
                         pkap = pkap + 1
                     else:
-                        fields = parse(i)
+                        fields = parse(i.encode())
                         tmp4=[]
-                        tmp4.append( float( format(fields)[ 2:24] ) )
-                        tmp4.append( float( format(fields)[28:50] ) )
-                        tmp4.append( float( format(fields)[54:76] ) )
+                        tmp4.append( float( fields[0].decode() ) )
+                        tmp4.append( float( fields[1].decode() ) )
+                        tmp4.append( float( fields[2].decode() ) )
                         tmpkap.append(tmp4)
                         tmpkap = [item for sublist in tmpkap for item in sublist]
                         oldBrowslist[ct].Vhess = tmpkap
