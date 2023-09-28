@@ -22,22 +22,22 @@ def MPACMF(A,B,IQ):
     A = np.matrix(A)
     B = np.matrix(B)
     if IQ == 1:
-       A = A.transpose()
-       B = B.transpose()
-       C = A * B
-       C = C.transpose()
+        A = A.transpose()
+        B = B.transpose()
+        C = A * B
+        C = C.transpose()
     if IQ == 2:
-       B = B.transpose()
-       C = A * B
-       C = C.transpose()
+        B = B.transpose()
+        C = A * B
+        C = C.transpose()
     if IQ == 3:
-       A = A.transpose()
-       C = A * B
-       C = C.transpose()
+        A = A.transpose()
+        C = A * B
+        C = C.transpose()
     return C
 
 #######################
-  
+
 
 #a=np.matrix( [ [1,1],[-1,3] ] )
 #b=np.matrix( [ [1,0],[1,-1] ] )
@@ -70,7 +70,7 @@ def MMpyMF(A,B):
     #             [4,...
     #             [.
     #             [N
- 
+
 
 
 
@@ -86,7 +86,7 @@ def MMpyMF(A,B):
 #######################################
 
 
-## MatMP1 
+## MatMP1
 def MatMp1(A,B):
     "Interface MatMp1 subroutine into Python"
     # A - (M,L) fortran
@@ -117,7 +117,7 @@ def MatMp1(A,B):
     #             [4,...
     #             [.
     #             [N
- 
+
     A = np.array( A )
     B = np.array( B )
     #B = B.transpose()
@@ -129,16 +129,16 @@ def MatMp1(A,B):
 
     C=[]
     for i in range(N):
-	C.append( [] )
+        C.append( [] )
     for i in range(N):
-	for j in range(L):
-	    C[i].append(0)
+        for j in range(L):
+            C[i].append(0)
 
     for i in range(N):
-	for j in range(L):
+        for j in range(L):
             C[i][j] = np.dot( A[j], B[i] )
     C = np.array(C)
-    
+
     return C
 ###############################################
 
@@ -166,12 +166,12 @@ def pDiagSq(Indx,B):
     A = np.zeros((N,N))
     eps = 1.0e-8
     if Indx == 0:
-       for i in range(N):
-	   A[i,i] = (abs(B[i]))**0.5
+        for i in range(N):
+            A[i,i] = (abs(B[i]))**0.5
     else:
-       for i in range(N):
-           if (abs(B[i]) > eps):
-	      A[i,i] = 1 / (abs(B[i]))**0.5 
+        for i in range(N):
+            if (abs(B[i]) > eps):
+                A[i,i] = 1 / (abs(B[i]))**0.5
 
     return A
 ################################################
@@ -192,12 +192,12 @@ def SqrtMp(Mode,S):
 
     S = np.matrix( S )
     if Mode > 0:
-       P = sqrtm( S )
-        
-    if Mode < 0:
-       P = np.linalg.pinv(  sqrtm( S ) )
+        P = sqrtm( S )
 
-    return P 
+    if Mode < 0:
+        P = np.linalg.pinv(  sqrtm( S ) )
+
+    return P
 
 ##############
 
@@ -221,11 +221,11 @@ def LT2Sqr(N,T):
             S[0][i] = T[k]
             #print S
         if i != 1:
-         for j in range(i):
-            k = k + 1
-            S[i][j] = T[k]
-            S[j][i] = T[k]
-            #print S
+            for j in range(i):
+                k = k + 1
+                S[i][j] = T[k]
+                S[j][i] = T[k]
+                #print S
         k = k + 1
         S[i][i] = T[k]
         #print S
@@ -240,53 +240,53 @@ def GSorth(Reorder,N,M,Vec):
     Tol = 0.1
     NGen = 0
     IGen = 0 #- 1 #Corrected
- 
+
     Scr=[]
     #for i in range(N):
     #    Scr.apend([])
 
     for i in range(N):
-	#for j in range(N):
-            Scr.append(0)
+        #for j in range(N):
+        Scr.append(0)
 #########################################
-    
+
     for Idx in range(M+N): # 0 ... M+N-1
         NGen = NGen + 1
-	#Idx2 = Idx + 1
-	if Idx <= (M-1):
-	   #print "check idx"
-           for j in range(N):
-               Scr[j] = Vec[Idx][j]
-        else:
-           for j in range(N):
-               Scr[j] = 0
-	   IGen = IGen + 1
-           Scr[IGen-1] = 1     
-       
-	for Jdx in range(NGen-1):
-	    X = -1 * np.dot(Vec[Jdx],Scr[0:N])
-	    #print "l2",Scr[0:N]
+        #Idx2 = Idx + 1
+        if Idx <= (M-1):
+            #print "check idx"
             for j in range(N):
-		Scr[j] = X*Vec[Jdx][j] + Scr[j]
-	X = np.dot(Scr[0:N],Scr[0:N])
+                Scr[j] = Vec[Idx][j]
+        else:
+            for j in range(N):
+                Scr[j] = 0
+            IGen = IGen + 1
+            Scr[IGen-1] = 1
+
+        for Jdx in range(NGen-1):
+            X = -1 * np.dot(Vec[Jdx],Scr[0:N])
+            #print "l2",Scr[0:N]
+            for j in range(N):
+                Scr[j] = X*Vec[Jdx][j] + Scr[j]
+        X = np.dot(Scr[0:N],Scr[0:N])
         X = X**0.5
 
         if X > Tol:
-           #print "YES"
-           X = 1/X
-	   #print Scr[0:N]
-           for i in range(N):
-	       Vec[NGen-1][i] = X*Scr[i]
-	   #print "NGen=",NGen
-	   #print Vec[NGen-1]
-	else:
-	   NGen = NGen - 1 
-	if NGen ==  N:
-           break
+            #print "YES"
+            X = 1/X
+            #print Scr[0:N]
+            for i in range(N):
+                Vec[NGen-1][i] = X*Scr[i]
+            #print "NGen=",NGen
+            #print Vec[NGen-1]
+        else:
+            NGen = NGen - 1
+        if NGen ==  N:
+            break
 
     if Reorder == 1:
-       pass
-       #not implemented
+        pass
+        #not implemented
 
     return Vec
 #######################
@@ -305,21 +305,21 @@ def prtVib(eig):
     NVib = len(eig)
     frq = []
     for i in eig:
-	if i > 0:
-	   frq.append((i**0.5)*5140.48715246)
-	else:
-	   frq.append( -1*((-1*i)**0.5)*5140.48715246)
+        if i > 0:
+            frq.append((i**0.5)*5140.48715246)
+        else:
+            frq.append( -1*((-1*i)**0.5)*5140.48715246)
     for i in range(len(frq)):
-	print ("Freq %3i =%8.1f"%(i+1,frq[i]))
+        print(("Freq %3i =%8.1f"%(i+1,frq[i])))
 
 def prtViblist(eig):
     NVib = len(eig)
     frq = []
     for i in eig:
-	if i > 0:
-	   frq.append((i**0.5)*5140.48715246)
-	else:
-	   frq.append( -1*((-1*i)**0.5)*5140.48715246)
+        if i > 0:
+            frq.append((i**0.5)*5140.48715246)
+        else:
+            frq.append( -1*((-1*i)**0.5)*5140.48715246)
 
     return frq
 
@@ -328,7 +328,7 @@ def AnBInA(NComp,NBas,NVec,A,O,B,FulAmp):
     pass
 
     # Input data
-    # A has NBas lists whose length is NComp  
+    # A has NBas lists whose length is NComp
     # O has NComp lists whose length is NComp
     # B has NVec lists whose length is NComp
 
@@ -341,49 +341,49 @@ def AnBInA(NComp,NBas,NVec,A,O,B,FulAmp):
     # Initialize tmp1
     tmp1 = []
     for i in range(NBas):
-	tmp1.append( [] )
+        tmp1.append( [] )
     for i in range(NBas):
-	for j in range(NComp):
-	    tmp1[i].append( 0 )
-    
+        for j in range(NComp):
+            tmp1[i].append( 0 )
+
     # Initialize tmp2
     tmp2 = []
     for i in range(NVec):
-	tmp2.append( [] )
+        tmp2.append( [] )
     for i in range(NVec):
-	for j in range(NComp):
-	    tmp2[i].append( 0 )
+        for j in range(NComp):
+            tmp2[i].append( 0 )
 
     # Initialize Saa
     Saa = []
     for i in range(NBas):
-	Saa.append( [] )
+        Saa.append( [] )
     for i in range(NBas):
-	for j in range(NBas):
-	    Saa[i].append( 0 )
+        for j in range(NBas):
+            Saa[i].append( 0 )
 
     # Initialize Sbb
     Sbb = []
     for i in range(NVec):
-	Sbb.append( [] )
+        Sbb.append( [] )
     for i in range(NVec):
-	for j in range(NVec):
-	    Sbb[i].append( 0 )
-     
+        for j in range(NVec):
+            Sbb[i].append( 0 )
+
     # Initialize Sab
     Sab = []
     for i in range(NVec):
-	Sab.append( [] )
+        Sab.append( [] )
     for i in range(NVec):
-	for j in range(NBas):
-	    Sab[i].append( 0 )
+        for j in range(NBas):
+            Sab[i].append( 0 )
 
     # Initialize Amp1
     Amp1 = []
     for i in range(NVec):
-	Amp1.append( [] )
+        Amp1.append( [] )
     for i in range(NVec):
-	for j in range(NBas):
+        for j in range(NBas):
             Amp1[i].append( 0 )
 
 
@@ -391,44 +391,44 @@ def AnBInA(NComp,NBas,NVec,A,O,B,FulAmp):
 
     # Product between A and O
     for i in range(NBas):
-	for j in range(NComp):
-            tmp1[i][j] = np.dot( A[i], O[j] ) 
+        for j in range(NComp):
+            tmp1[i][j] = np.dot( A[i], O[j] )
 
-    # Product between tmp1 and A 
+    # Product between tmp1 and A
     for i in range(NBas):
-	for j in range(NBas):
+        for j in range(NBas):
             Saa[i][j] = np.dot( tmp1[i], A[j] )
 
     # Product between B and O
     for i in range(NVec):
-	for j in range(NComp):
-	    tmp2[i][j] = np.dot( B[i], O[j]   )
+        for j in range(NComp):
+            tmp2[i][j] = np.dot( B[i], O[j]   )
 
     # Product between tmp2 and B
     for i in range(NVec):
-	for j in range(NVec):
-	    Sbb[i][j] = np.dot( tmp2[i], B[j] )
+        for j in range(NVec):
+            Sbb[i][j] = np.dot( tmp2[i], B[j] )
 
     # Product between A and O
     for i in range(NBas):
-	for j in range(NComp):
-            tmp1[i][j] = np.dot( A[i], O[j] ) 
+        for j in range(NComp):
+            tmp1[i][j] = np.dot( A[i], O[j] )
 
     # Product between tmp1 and B
     for i in range(NBas):
-	for j in range(NVec):
+        for j in range(NVec):
             Sab[j][i] =  np.dot( tmp1[i], B[j] )
 
-    # 
+    #
     for Mu in range(NVec):
-	for n in range(NBas):
-	    if FulAmp:
-	       Amp1[Mu][n] = Sab[Mu][n] / math.sqrt(abs( Saa[n][n] ) ) 
+        for n in range(NBas):
+            if FulAmp:
+                Amp1[Mu][n] = Sab[Mu][n] / math.sqrt(abs( Saa[n][n] ) )
             else:
-	       Amp1[Mu][n] = Sab[Mu][n] * Sab[Mu][n] /( Saa[n][n]*Sbb[Mu][Mu] )
-      
-      
-    return Amp1  
+                Amp1[Mu][n] = Sab[Mu][n] * Sab[Mu][n] /( Saa[n][n]*Sbb[Mu][Mu] )
+
+
+    return Amp1
 
 
 
@@ -439,21 +439,21 @@ def AnBInA(NComp,NBas,NVec,A,O,B,FulAmp):
 #
 def SProd2lay(A,B):
     if len(A) != len(B):
-       stop("Error: Dimension not match in A and B within SProd2lay")
+        stop("Error: Dimension not match in A and B within SProd2lay")
     if len(A[0]) != len(B[0]):
-       stop("Error: Dimension not match in A and B within SProd2lay")
+        stop("Error: Dimension not match in A and B within SProd2lay")
 
     nl1 = len(A)
     nl2 = len(A[0])
     tmp0 = 0.0
     for i in range(nl1):
-	tmp1 = 0.0
+        tmp1 = 0.0
         if len(A[i]) != len(B[i]):
-           stop("Error: Dimension not match in A and B within SProd2lay")
+            stop("Error: Dimension not match in A and B within SProd2lay")
 
         for j in range(nl2):
-	    p = A[i][j] * B[i][j]
-	    tmp1 = tmp1 + p
+            p = A[i][j] * B[i][j]
+            tmp1 = tmp1 + p
         tmp0 = tmp0 + tmp1
 
     return tmp0
@@ -463,7 +463,7 @@ def SProd2lay(A,B):
 #A=[a,a]
 #B=[b,b]
 
-#print SProd2lay(A,B)     
+#print SProd2lay(A,B)
 
 
 
@@ -906,7 +906,7 @@ def m1formula(xa,ya,za,xb,yb,zb,xc,yc,zc):
          2*ya*yb*zb**2*zc**2 + \
          yb**2*zb**2*zc**2)
 
-    return m1 
+    return m1
 
 
 def n1formula( xa,ya,za,xb,yb,zb,xc,yc,zc ):
@@ -20237,9 +20237,9 @@ def p1formula( xa,ya,za,xb,yb,zb,xc,yc,zc ):
           xc*za**2 + xa*za*zb + xb*za*zb -  \
           2*xc*za*zb - xa*zb**2 +  \
           xc*zb**2 - xa*za*zc + xb*za*zc +  \
-          xa*zb*zc - xb*zb*zc) 
+          xa*zb*zc - xb*zb*zc)
 
-    return p1 
+    return p1
 
 
 def m2formula( xa,ya,za,xb,yb,zb,xc,yc,zc ):
@@ -20678,9 +20678,9 @@ def m2formula( xa,ya,za,xb,yb,zb,xc,yc,zc ):
           xb**2*zc**4 +   \
           ya**2*zc**4 -   \
           2*ya*yb*zc**4 +   \
-          yb**2*zc**4)  
+          yb**2*zc**4)
 
-    return m2 
+    return m2
 
 
 def n2formula( xa,ya,za,xb,yb,zb,xc,yc,zc ):
@@ -30551,9 +30551,9 @@ def n2formula( xa,ya,za,xb,yb,zb,xc,yc,zc ):
           xc*zb**2 - xb*za*zc +  \
           xc*za*zc + 2*xa*zb*zc -  \
           xb*zb*zc - xc*zb*zc -  \
-          xa*zc**2 + xb*zc**2) 
+          xa*zc**2 + xb*zc**2)
 
- 
+
     return n2
 
 
@@ -40425,9 +40425,9 @@ def p2formula( xa,ya,za,xb,yb,zb,xc,yc,zc ):
           xc*zb**2 - xb*za*zc +  \
           xc*za*zc + 2*xa*zb*zc -  \
           xb*zb*zc - xc*zb*zc -  \
-          xa*zc**2 + xb*zc**2) 
+          xa*zc**2 + xb*zc**2)
 
-    return p2 
+    return p2
 
 
 def dm1xaformula( xa,ya,za,xb,yb,zb,xc,yc,zc ):
@@ -41487,7 +41487,7 @@ def dm1xaformula( xa,ya,za,xb,yb,zb,xc,yc,zc ):
            xb**2*zb**2*zc**2 +  \
            ya**2*zb**2*zc**2 -  \
            2*ya*yb*zb**2*zc**2 +  \
-           yb**2*zb**2*zc**2) 
+           yb**2*zb**2*zc**2)
 
     return value
 
@@ -41506,9 +41506,9 @@ def xapform( xa,ya,za,xb,yb,zb,xc,yc,zc ):
                ))/  \
           ((xb - xc)*(-xb + xc) +   \
             (yb - yc)*(-yb + yc) +   \
-            (zb - zc)*(-zb + zc)))  
+            (zb - zc)*(-zb + zc)))
 
-    return xap 
+    return xap
 
 def yapform( xa,ya,za,xb,yb,zb,xc,yc,zc ):
     yap = \
@@ -41527,8 +41527,8 @@ def yapform( xa,ya,za,xb,yb,zb,xc,yc,zc ):
             xc**2 + yb**2 -  \
             2*yb*yc + yc**2 +  \
             zb**2 - 2*zb*zc + zc**2 \
-            )) 
-  
+            ))
+
     return yap
 
 def zapform( xa,ya,za,xb,yb,zb,xc,yc,zc ):
@@ -41547,7 +41547,7 @@ def zapform( xa,ya,za,xb,yb,zb,xc,yc,zc ):
             xc**2 + yb**2 -   \
             2*yb*yc + yc**2 +   \
             zb**2 - 2*zb*zc + zc**2  \
-            ))  
+            ))
     return zap
 
 def xdpform( xb,yb,zb,xc,yc,zc,xd,yd,zd ):
@@ -41563,9 +41563,9 @@ def xdpform( xb,yb,zb,xc,yc,zc,xd,yd,zd ):
                (-zb + zc)*zd))/ \
           ((xb - xc)*(-xb + xc) +  \
             (yb - yc)*(-yb + yc) +  \
-            (zb - zc)*(-zb + zc))) 
+            (zb - zc)*(-zb + zc)))
 
-    return xdp 
+    return xdp
 
 def ydpform( xb,yb,zb,xc,yc,zc,xd,yd,zd ):
     ydp = \
@@ -41586,7 +41586,7 @@ def ydpform( xb,yb,zb,xc,yc,zc,xd,yd,zd ):
             zb**2 - 2*zb*zc + zc**2  \
             ))
 
-    return ydp 
+    return ydp
 
 
 def zdpform( xb,yb,zb,xc,yc,zc,xd,yd,zd ):
@@ -41709,7 +41709,7 @@ def n1form2( xa,ya,za,xb,yb,zb,xc,yc,zc ):
           + (xa**2 +  \
             (ya - yb)**2)*zc**2)
 
-  
+
     return n1
 
 
@@ -41914,5 +41914,3 @@ def p2form2( xb,yb,zb,xc,yc,zc,xd,yd,zd ):
 
 
     return p2
-
-

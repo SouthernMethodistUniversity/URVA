@@ -48,33 +48,33 @@ def DMODriv(A,B,Freq,NAtm3,NVib):
 def Order1(NParm,NVib,NSp,NDim,Lst1,Lst2,B,Freq):
     Scr=[]
     for i in range(NVib):
-	Scr.append([])
+        Scr.append([])
     for i in range(NVib):
-	for j in range(NParm):
+        for j in range(NParm):
             Scr[i].append(0)
-	
+
     for Mu in range(NVib):
-	Scr[Mu][0] = Freq[Mu]   # Corrected
+        Scr[Mu][0] = Freq[Mu]   # Corrected
     for ISp in range(NSp):
-        NDim1 = NDim[ISp]   
+        NDim1 = NDim[ISp]
         for K in range(NDim1): # Corrected
             I1 = Lst1[K][ISp]
-	    I2 = Lst2[K][ISp]
+            I2 = Lst2[K][ISp]
             Freq[I2-1] = Scr[I1-1][0] # Corrected
     Scr = copy.deepcopy(B)
     for ISp in range(NSp):
-	NDim1 = NDim[ISp]
+        NDim1 = NDim[ISp]
         for K in range(NDim1): # Corrected
             I1 = Lst1[K][ISp]
-	    I2 = Lst2[K][ISp]
+            I2 = Lst2[K][ISp]
             for i in range(NParm):
-		B[I2-1][i] = Scr[I1-1][i]
-		#Scr[i][I1] = B[i][I2]
+                B[I2-1][i] = Scr[I1-1][i]
+                #Scr[i][I1] = B[i][I2]
     for ISp in range(NSp):
-	NDim1 = NDim[ISp]
+        NDim1 = NDim[ISp]
         for K in range(NDim1): # Corrected
-	    I1 = Lst1[K][ISp]
-	    I2 = Lst2[K][ISp]
+            I1 = Lst1[K][ISp]
+            I2 = Lst2[K][ISp]
 
     return (B,Freq)
 
@@ -101,30 +101,30 @@ def RotDeg(NVib,NParm,NSp,A,B,NDim,Lst1,Lst2,T):
     A1=[]
     B1=[]
     for i in range(NVib):
-	A1.append([])
-	B1.append([])
+        A1.append([])
+        B1.append([])
     for i in range(NVib):
-	for j in range(NParm):
+        for j in range(NParm):
             A1[i].append(0)
-	    B1[i].append(0)
+            B1[i].append(0)
 
 
     for ISp in range(NSp):
-	NDim1 = NDim[ISp]
-	for K in range(NDim1): # Corrected
+        NDim1 = NDim[ISp]
+        for K in range(NDim1): # Corrected
             for i in range(NParm):
                 A1[K][i] = A[Lst2[K][ISp]-1][i]
                 B1[K][i] = B[Lst1[K][ISp]-1][i]  # Corrected
                 #A1[i][K] = A[i][Lst2[K][ISp]]
                 #B1[i][K] = B[i][Lst2[K][ISp]]
         #print "NDim1",NDim1
-	#print B1
-	A1 = A1[0:(NDim1)]
-	B1 = B1[0:(NDim1)]
+        #print B1
+        A1 = A1[0:(NDim1)]
+        B1 = B1[0:(NDim1)]
         A1,B1,T = RotDg1(1,NParm,NDim1,A1,B1)
              #def RotDg1(RotB,NParm,NVib,A,B)
-	B1=np.array(B1)
-	for K in range(NDim1): # Corrected 
+        B1=np.array(B1)
+        for K in range(NDim1): # Corrected
             for i in range(NParm):
                 B[Lst1[K][ISp]-1][i] = B1[K][i]
                 #B[i][Lst1[K][ISp]] = B1[i][K]
@@ -135,36 +135,36 @@ def RotDeg(NVib,NParm,NSp,A,B,NDim,Lst1,Lst2,T):
 ## AssSp2
 def AssSp2(NVib,NSp,T,NDim,Lst1):
     #print "NVib=",NVib,"NSp=",NSp
-    T = np.array(T) 
+    T = np.array(T)
     Ampl=[]
     for i in range(NSp):
-	Ampl.append([])
+        Ampl.append([])
     for i in range(NSp):
-	for j in range(NVib):
-	    Ampl[i].append(0) # Corrected
+        for j in range(NVib):
+            Ampl[i].append(0) # Corrected
             #Ampl[i][j] = 0
     Scr=[]
     for i in range(NVib):
-	Scr.append([])
+        Scr.append([])
     for i in range(NVib):
-	for j in range(NVib):
-	    Scr[i].append(0)
+        for j in range(NVib):
+            Scr[i].append(0)
 
     Lst2=[]
     for i in range(NVib):
         Lst2.append([])
     for i in range(NVib):
-	for j in range(NVib):
+        for j in range(NVib):
             Lst2[i].append(0)
- 
+
 
     for ISp in range(NSp):
-	NDim1 = NDim[ISp] #- 1 # correction for python
+        NDim1 = NDim[ISp] #- 1 # correction for python
         for Mu in range(NVib):
             X = 0.0
-	    for K in range(NDim1): # Corrected 
-		Y = T[Mu][Lst1[K][ISp]-1]
-		#print type(T)
+            for K in range(NDim1): # Corrected
+                Y = T[Mu][Lst1[K][ISp]-1]
+                #print type(T)
                 X = X + Y**2
             Ampl[ISp][Mu] = X
 
@@ -177,25 +177,25 @@ def AssSp2(NVib,NSp,T,NDim,Lst1):
 
     #Scr = copy.deepcopy(Ampl)
     for i in range(NSp):
-	for j in range(NVib):
+        for j in range(NVib):
             Scr[i][j] = Ampl[i][j]
 
     for ISp in range(NSp):
         NDim1 = NDim[ISp]
         SumAmp = 0.0
         for K in range(NDim1): # Corrected
-	    XMax = max( Scr[ISp] )  #Scr is a list 
-            IMax = Scr[ISp].index(XMax)  # Corrected 
+            XMax = max( Scr[ISp] )  #Scr is a list
+            IMax = Scr[ISp].index(XMax)  # Corrected
             Lst2[K][ISp] = IMax + 1  # Corrected
-	    for Mu in range(NVib):
-		Scr[Mu][IMax] = 0.0
-		#Scr[IMax][Mu] = 0.0
+            for Mu in range(NVib):
+                Scr[Mu][IMax] = 0.0
+                #Scr[IMax][Mu] = 0.0
             SumAmp = SumAmp + XMax
-    
+
     IErr = ChkLs2(NVib,NSp,NDim,Lst2)
     if IErr != 0:
-       print ("AssSp2: Inconsistency in space assignment! \nTry smaller NSTEP.")
-       sys.exit()
+        print ("AssSp2: Inconsistency in space assignment! \nTry smaller NSTEP.")
+        sys.exit()
 
     return (NSp,T,NDim,Lst1,Lst2)
 
@@ -205,19 +205,19 @@ def AssSp2(NVib,NSp,T,NDim,Lst1):
 def ChkLs2(NVib,NSp,NDim,Lst2):
     IErr = 0
     for ISp1 in range(NSp):
-	NDim1 = NDim[ISp1]
-	for K1 in range(NDim1): # Corrected
+        NDim1 = NDim[ISp1]
+        for K1 in range(NDim1): # Corrected
             L1 = Lst2[K1][ISp1]
             for ISp2 in range(NSp):
                 NDim2 = NDim[ISp2]
-		for K2 in range(NDim2): # Corrected
+                for K2 in range(NDim2): # Corrected
                     L2 = Lst2[K2][ISp2]
                     Same =( (ISp1==ISp2) and (K1==K2) )
                     if (not Same):
-		       if L1 == L2:
-			  IErr =1
+                        if L1 == L2:
+                            IErr =1
 
-    return IErr 
+    return IErr
 #####################################################
 
 ## AssSp1
@@ -229,64 +229,64 @@ def AssSp1(NVib,Freq,Tresh):
     Freq1=[]
     Freq2=[]
     for i in range(NVib):
-	NDim.append(0)
-	Ind.append(0)
-	Freq1.append(0)
-	Freq2.append(0)
+        NDim.append(0)
+        Ind.append(0)
+        Freq1.append(0)
+        Freq2.append(0)
 
 
     Lst1=[]
     for i in range(NVib):
         Lst1.append([])
     for i in range(NVib):
-	for j in range(NVib):
+        for j in range(NVib):
             Lst1[i].append(0)
 
 
     ISp = 0   # correction for python
     LOld = NVib
     for Mu in range(NVib): # start from 0
-	Ind[Mu] = Mu + 1
-	Freq1[Mu] = Freq[Mu] 
+        Ind[Mu] = Mu + 1
+        Freq1[Mu] = Freq[Mu]
     goto5 = 1
     #print "Ind",Ind
     #print "Freq1",Freq1
     while goto5 == 1:
-	  ISp = ISp + 1
-	  FrqMin = min(Freq1[:LOld])
-          #print "ISp,FrqMin",ISp,FrqMin 
-          Freq2[ISp-1] = FrqMin     ###########
-          K = 0  # correction for python
-	  LNew = 0  # correction for python
-          for Mu in range(LOld):
-              #print "RUN"
-              Delta = abs(FrqMin - Freq1[Mu])
-              if Delta <= Tresh :             ######### Tresh
-		 K = K + 1
-		 #print "RUN"
-		 #print "Ind",Ind
-		 #print "K,ISp",K,ISp
-		 Lst1[K-1][ISp-1] = Ind[Mu] ############
-              else:
-		 LNew = LNew + 1
-                 Ind[LNew-1] = Ind[Mu]
-		 Freq1[LNew-1] = Freq1[Mu]
-          NDim[ISp-1] = K   ## ??
-          LOld = LNew 
-	  if LNew <= 0:   ## ??
-	     goto5 = 0
-	  else:
-             goto5 = 1 # repeat the while loop
+        ISp = ISp + 1
+        FrqMin = min(Freq1[:LOld])
+        #print "ISp,FrqMin",ISp,FrqMin
+        Freq2[ISp-1] = FrqMin     ###########
+        K = 0  # correction for python
+        LNew = 0  # correction for python
+        for Mu in range(LOld):
+            #print "RUN"
+            Delta = abs(FrqMin - Freq1[Mu])
+            if Delta <= Tresh :             ######### Tresh
+                K = K + 1
+                #print "RUN"
+                #print "Ind",Ind
+                #print "K,ISp",K,ISp
+                Lst1[K-1][ISp-1] = Ind[Mu] ############
+            else:
+                LNew = LNew + 1
+                Ind[LNew-1] = Ind[Mu]
+                Freq1[LNew-1] = Freq1[Mu]
+        NDim[ISp-1] = K   ## ??
+        LOld = LNew
+        if LNew <= 0:   ## ??
+            goto5 = 0
+        else:
+            goto5 = 1 # repeat the while loop
     NSp = ISp
 
-    return (Freq,NSp,NDim,Lst1) 
+    return (Freq,NSp,NDim,Lst1)
 #################################################
 
-## RotDg1 
+## RotDg1
 def RotDg1(RotB,NParm,NVib,A,B):
     "Interfacing RotDg1 into python"
-    
-   # A    [NVib][NParm]  
+
+   # A    [NVib][NParm]
    # B    [NVib][NParm]
    # Sab  [Nvib][Nvib ]
 
@@ -331,25 +331,25 @@ def RotDg1(RotB,NParm,NVib,A,B):
     #print "A stop"
 
     Sab = MatMp1(A,B)
-    
+
     #print Sab
 
     Scr = MatMp1(Sab,Sab) # symmetric matrix
-  
+
     #print Scr
 
     Scr1= SqrtMp(-1,Scr)
 
-    T   = MPACMF(Scr1,Sab,3) # ? 
+    T   = MPACMF(Scr1,Sab,3) # ?
 
     Scr = MMpyMF(Sab, T)
 
     if RotB == 1:
-       Scr = MMpyMF(B,T)
-       B = copy.deepcopy(Scr)  
+        Scr = MMpyMF(B,T)
+        B = copy.deepcopy(Scr)
 
     return (A,B,T)
-	
+
 
 ###############################################
 
@@ -358,18 +358,18 @@ def ABscIn(m,n,A,B):
     m = float(m)
     n = float(n)
     if m > n:
-       print ("Error: Illegal m value. m should not exceed n in ABscIn!")
-       sys.exit()
+        print ("Error: Illegal m value. m should not exceed n in ABscIn!")
+        sys.exit()
     la = len(A)
     lb = len(B)
     if la != lb:
-       print ("Different length for A and B!")
-       sys.exit()
-#    C = []   
+        print ("Different length for A and B!")
+        sys.exit()
+#    C = []
 #    for i in range(la):
-#	C.append(0)
+#       C.append(0)
 #    for i in range(la):
-#	C[i] = (B[i] - A[i]) * (m/n) + A[i]
+#       C[i] = (B[i] - A[i]) * (m/n) + A[i]
     A = np.array(A)
     B = np.array(B)
     C = (B - A)*(m/n) + A
@@ -378,6 +378,3 @@ def ABscIn(m,n,A,B):
 
 
     return C
-
-
-

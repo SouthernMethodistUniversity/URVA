@@ -2,13 +2,13 @@
 #parser = OptionParser()
 
 
-print "Warning: Be careful with the D and E format"
-print   "@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@"
-print   "@           Connecting Browsing File Tool (CBFT)             @"
-print   "@                                                            @"
-print   "@                        CATCO  Group                        @"
-print   "@                         08/28/2015                         @"
-print   "@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@"
+print("Warning: Be careful with the D and E format")
+print("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@")
+print("@           Connecting Browsing File Tool (CBFT)             @")
+print("@                                                            @")
+print("@                        CATCO  Group                        @")
+print("@                         08/28/2015                         @")
+print("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@")
 
 RevFile="IRC.reverse"
 ForFile="IRC.forward"
@@ -27,45 +27,45 @@ ForEndLN=[]
 
 
 for s in range(len(RevLines)):
-     if RevLines[s]=="BEGIN\n":
-         RevBeginN=RevBeginN+1
-         RevBeginLN.append(s)
-     if RevLines[s]=="END\n":
-         RevEndN=RevEndN+1
-         RevEndLN.append(s)
+    if RevLines[s]=="BEGIN\n":
+        RevBeginN=RevBeginN+1
+        RevBeginLN.append(s)
+    if RevLines[s]=="END\n":
+        RevEndN=RevEndN+1
+        RevEndLN.append(s)
 
 ForHandle=open(ForFile,"r")
 ForLines=ForHandle.readlines()
 for s in range(len(ForLines)):
-     if ForLines[s]=="BEGIN\n":
-         ForBeginN=ForBeginN+1
-         ForBeginLN.append(s)
-     if ForLines[s]=="END\n":
-         ForEndN=ForEndN+1
-         ForEndLN.append(s)
+    if ForLines[s]=="BEGIN\n":
+        ForBeginN=ForBeginN+1
+        ForBeginLN.append(s)
+    if ForLines[s]=="END\n":
+        ForEndN=ForEndN+1
+        ForEndLN.append(s)
 
-print "Forward Point # ",ForBeginN
-print "Reverse Point # ",RevBeginN
+print("Forward Point # ",ForBeginN)
+print("Reverse Point # ",RevBeginN)
 
 if ForEndN!=ForBeginN:
-         exit()
+    exit()
 if RevEndN!=RevBeginN:
-         exit()
+    exit()
 
 #We need to modified the XXIRC value in reverse part
 
 
 for m in range(RevEndN):
-   sline= RevLines[RevEndLN[m]-1].split()
-   xx= RevLines[RevEndLN[m]-1].split()[2]
-   print type(xx)
-   print xx
+    sline= RevLines[RevEndLN[m]-1].split()
+    xx= RevLines[RevEndLN[m]-1].split()[2]
+    print(type(xx))
+    print(xx)
 #   print float(xx)
 #   kk=-1* float(xx)
-   bb=float(xx)
-   kk=-1*float(xx)
-   ss=str(sline[0])+" "+str(sline[1])+" "+str(kk)+"\n"
-   RevLines[RevEndLN[m]-1]=ss
+    bb=float(xx)
+    kk=-1*float(xx)
+    ss=str(sline[0])+" "+str(sline[1])+" "+str(kk)+"\n"
+    RevLines[RevEndLN[m]-1]=ss
 
 
 
@@ -78,17 +78,15 @@ for m in range(RevEndN):
 
 
 for k in range(RevEndN):
-    j=RevEndN - k - 1 
+    j=RevEndN - k - 1
     for item in RevLines[RevBeginLN[j]:RevEndLN[j]+1]:
-         OutHandle.write( "%s" % item ) 
+        OutHandle.write( "%s" % item )
 
 for k in range(1,ForEndN):
-   for item in  ForLines[ForBeginLN[k]:ForEndLN[k]+1]:
-         OutHandle.write( "%s" % item )
- 
-print range(1,3)
+    for item in  ForLines[ForBeginLN[k]:ForEndLN[k]+1]:
+        OutHandle.write( "%s" % item )
+
+print(list(range(1,3)))
 
 for s in range(3):
-   print ForBeginN
-
-
+    print(ForBeginN)

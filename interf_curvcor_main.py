@@ -1,7 +1,7 @@
 # This is an interface of " curcorbra " for pURVA
-# This module could be imported by pURVA directly 
+# This module could be imported by pURVA directly
 # However, it relies on two dependent files:
-#  1. interf-curvcor-util.py  
+#  1. interf-curvcor-util.py
 #  2. interf-curvcor-util2.py
 #
 # INPUT FROM pURVA:
@@ -19,42 +19,42 @@
 
 
 from calc import solWils
-from fileio import stop 
+from fileio import stop
 from util import LT2Sqr
 import gc
 import numpy as np
 
 def corcurv(oBlist,Ln,Rn):
-     
-     print ("Info: Entering CurvCor interface...")	
-     # 
-     for i in range(len(oBlist)):
-	 if oBlist[i].s == 0.0:
-	     #print "zero "
-             zeroindex = i
-     points = []
-     for i in range(Ln):
-         j = Ln - i
-	 #print zeroindex - j
-         points.append( zeroindex - j )
-     #print zeroindex
-     points.append( zeroindex )
-     for i in range(Rn):
-	 j = i + 1
-	 points.append( zeroindex + j )
 
-     #
+    print ("Info: Entering CurvCor interface...")
+    #
+    for i in range(len(oBlist)):
+        if oBlist[i].s == 0.0:
+            #print "zero "
+            zeroindex = i
+    points = []
+    for i in range(Ln):
+        j = Ln - i
+        #print zeroindex - j
+        points.append( zeroindex - j )
+    #print zeroindex
+    points.append( zeroindex )
+    for i in range(Rn):
+        j = i + 1
+        points.append( zeroindex + j )
 
-     corkappas = []
-     #print "points",points
-     #points = [563]
-     #print tripleprocess(zeroindex,oBlist)
-     for i in range(len(points)):
-         sval,kappaval =  tripleprocess( points[i],oBlist )
-         corkappas.append([sval,kappaval])
+    #
 
-     #print corkappas
-     return corkappas
+    corkappas = []
+    #print "points",points
+    #points = [563]
+    #print tripleprocess(zeroindex,oBlist)
+    for i in range(len(points)):
+        sval,kappaval =  tripleprocess( points[i],oBlist )
+        corkappas.append([sval,kappaval])
+
+    #print corkappas
+    return corkappas
 
 
 def extmcgh(pindex,oBlist):
@@ -70,10 +70,10 @@ def extmcgh(pindex,oBlist):
 
 
 def tripleprocess(pindex,oBlist):
-    a = pindex - 1 
-    b = pindex 
+    a = pindex - 1
+    b = pindex
     c = pindex + 1
-    
+
     #print oBlist[b].Vhess
 
     Vmass, VcoorA, VgradA, VhessA = extmcgh( a, oBlist )
@@ -81,7 +81,7 @@ def tripleprocess(pindex,oBlist):
     Vmass, VcoorC, VgradC, VhessC = extmcgh( c, oBlist )
 
     # Get the normal modes
-    eig,nm,cdisp=solWils(VcoorB,VhessB,Vmass) 
+    eig,nm,cdisp=solWils(VcoorB,VhessB,Vmass)
 
     # Flatten Vcoor
     VcoorA = [item for sublist in VcoorA for item in sublist]
@@ -91,26 +91,26 @@ def tripleprocess(pindex,oBlist):
     # Re-calculate step size of IRC
     s = 0.0
     for i in range(len(VcoorB)):
-	    j = i / 3
-	    tmp = ((VcoorA[i] - VcoorB[i])**2 ) * Vmass[j]
-	    s = s + tmp
+        j = i / 3
+        tmp = ((VcoorA[i] - VcoorB[i])**2 ) * Vmass[j]
+        s = s + tmp
     dsn = s**0.5
 
     s = 0.0 # fixed here
     for i in range(len(VcoorA)):
-            j = i / 3 
-            tmp = ((VcoorB[i] - VcoorC[i])**2 ) * Vmass[j]
-	    s = s + tmp
+        j = i / 3
+        tmp = ((VcoorB[i] - VcoorC[i])**2 ) * Vmass[j]
+        s = s + tmp
     dsp = s**0.5
 
     #print dsp,dsn
-    ## Complain if dsn or dsp goes wrong 
+    ## Complain if dsn or dsp goes wrong
     if dsn == 0.0 or dsp == 0.0:
-       stop("Error: dsn/dsp in interface curvcor... ")
+        stop("Error: dsn/dsp in interface curvcor... ")
     if (dsn/dsp)>= 5.0 or (dsp/dsn)>= 5.0:
-       stop("Error: dsn/dsp huge difference in interface curvcor...")
+        stop("Error: dsn/dsp huge difference in interface curvcor...")
 
-    # Calculation 
+    # Calculation
     NAtom = len(Vmass)
     ffM1 =  LT2Sqr( 3*NAtom, VhessB )
     ffMp =  LT2Sqr( 3*NAtom, VhessC )
@@ -125,7 +125,7 @@ def tripleprocess(pindex,oBlist):
     for i in range(3*NAtom):
         for j in range(3*NAtom):
             im = i / 3
-	    jm = j / 3
+            jm = j / 3
             ffMp[i][j] = ffMp[i][j] / ( (Vmass[im])**0.5 * (Vmass[jm]**0.5) )
             ffMn[i][j] = ffMn[i][j] / ( (Vmass[im])**0.5 * (Vmass[jm]**0.5) )
             ffM1[i][j] = ffM1[i][j] / ( (Vmass[im])**0.5 * (Vmass[jm]**0.5) )
@@ -139,7 +139,7 @@ def tripleprocess(pindex,oBlist):
     del ffMp
     gc.collect()
 
-   
+
     ffM1 = np.matrix(ffM1)
     Veta = np.array( nm[0]  )
 
@@ -164,7 +164,7 @@ def tripleprocess(pindex,oBlist):
     tmp = np.asarray(tmp)[0]
 
     a = np.dot(Veta,tmp)
-    
+
     av = Veta * a
 
     Right = tmp - av
@@ -178,20 +178,12 @@ def tripleprocess(pindex,oBlist):
 
     result = np.linalg.norm(cur)
     sval = oBlist[b].s
-    
+
     return (sval,result)
-   
+
 
 
 
 
 
     #print "hello...."
-
-
-
-
-
-
-
-
