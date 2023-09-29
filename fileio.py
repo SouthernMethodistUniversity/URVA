@@ -26,15 +26,15 @@ def logo():
     print("/ / /              \::/  /       |:|  |        ~~~~           /:/  /   ")
     print("\/_/                \/__/         \|__|                       \/__/    ")
 
-    print ("")
+    print("")
     print("     The Standalone PROGRAM of UNIFIED REACTION VALLEY APPROACH ")
-    print ("                       Ver. 0.1.61(2017/05/24)       ")
-    print ("")
-    print ("        Yunwen Tao, Wenli Zou, Elfi Kraka and Dieter Cremer")
-    print ("      Computational and Theoretical Chemistry Group (CATCO), SMU  ")
-    print ("                      Dallas, Texas 75275 USA                 ")
-    print ("               Webpage: sites.smu.edu/dedman/catco/         ")
-    print ("")
+    print("                       Ver. 0.2.0(2023/09/29)       ")
+    print("")
+    print("Yunwen Tao, Robert Kalescky, Wenli Zou, Elfi Kraka and Dieter Cremer")
+    print("      Computational and Theoretical Chemistry Group (CATCO), SMU  ")
+    print("                      Dallas, Texas 75275 USA                 ")
+    print("               Webpage: sites.smu.edu/dedman/catco/         ")
+    print("")
 
 
 ### Element symbol -> atomic number
