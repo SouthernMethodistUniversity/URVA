@@ -1,0 +1,3 @@
+[submodule "lib/LModeA"]
+	path = lib/LModeA
+	url = git@github.com:rkalescky/LModeA.git

@@ -15,7 +15,7 @@
 
 @DATAFILEPATH = "./IRC.browse"  
 
-@BASEPATH = "./"  
+@BASEPATH = "/purva/"  
 
 #Title
 TITLE
