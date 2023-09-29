@@ -1,7 +1,6 @@
 # docker build -t purva:latest .
-# docker run -it -v "$PWD:$PWD" -w "$PWD" purva:latest main.py inp.inp
+# docker run -it -v "$PWD:$PWD" -w "$PWD" purva:latest inp.inp
 # docker run -it --entrypoint /bin/bash purva:latest
-# docker save -o ~/Downloads/lasso.tar purva:latest
 
 # Set build image
 FROM debian:bookworm-slim AS build
