@@ -18,7 +18,7 @@ jobs:
 
     - name: Build and Publish Container Image
       run: |
-        docker build . --tag ghcr.io/SouthernMethodistUniversity/pURVA:latest
+        docker build . --tag ghcr.io/southernmethodistuniversity/purva:latest
         docker run ghcr.io/SouthernMethodistUniversity/pURVA:latest
         docker push ghcr.io/SouthernMethodistUniversity/pURVA:latest
 
