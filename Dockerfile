@@ -19,6 +19,7 @@ RUN cd lmodea &&\
 
 # Deploy image
 FROM python:3.8.18-slim-bookworm
+LABEL org.opencontainers.image.source="https://github.com/SouthernMethodistUniversity/pURVA"
 
 # Install Python dependencies
 COPY requirements.txt /
