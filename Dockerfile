@@ -2,9 +2,6 @@
 # docker run -it -v "$PWD:$PWD" -w "$PWD" purva:latest inp.inp
 # docker run -it --entrypoint /bin/bash purva:latest
 
-# Label for GitHub Container Registry
-LABEL org.opencontainers.image.source=https://github.com/SouthernMethodistUniversity/pURVA
-
 # Set build image
 FROM debian:bookworm-slim AS build
 
