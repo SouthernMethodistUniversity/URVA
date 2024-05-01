@@ -1754,16 +1754,16 @@ def rdcmd(inpf,cmdgui): #,oldnew,nBrowsf,oBrowsf,xyzf, \
         cmdgui.Basename = cmdgui.Basename + "/"
 
     # Test whether the folder exist
-    if not os.path.isdir(cmdgui.Basename):
-        stop("Error: folder not exist- "+cmdgui.Basename)
-    if not os.path.exists(cmdgui.Basename+"main.py"):
-        stop("Error: could not find pURVA in "+cmdgui.Basename)
-    if not os.path.exists(cmdgui.Basename+"inter_removespikes_main.py"):
-        stop("Error: RMSPK module missing in "+cmdgui.Basename)
-    if not os.path.exists(cmdgui.Basename+"inter_autosmooth_main.py"):
-        stop("Error: AUTOSMTH module missing in "+cmdgui.Basename)
-    if not os.path.exists(cmdgui.Basename+"lm90.test.exe"):
-        stop("Error: ADIABLM module missing in "+cmdgui.Basename)
+#    if not os.path.isdir(cmdgui.Basename):
+#        stop("Error: folder not exist- "+cmdgui.Basename)
+#    if not os.path.exists(cmdgui.Basename+"main.py"):
+#        stop("Error: could not find pURVA in "+cmdgui.Basename)
+#    if not os.path.exists(cmdgui.Basename+"inter_removespikes_main.py"):
+#        stop("Error: RMSPK module missing in "+cmdgui.Basename)
+#    if not os.path.exists(cmdgui.Basename+"inter_autosmooth_main.py"):
+#        stop("Error: AUTOSMTH module missing in "+cmdgui.Basename)
+#    if not os.path.exists(cmdgui.Basename+"lm90.test.exe"):
+#        stop("Error: ADIABLM module missing in "+cmdgui.Basename)
 
 
 
