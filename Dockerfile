@@ -19,6 +19,7 @@ RUN cd lmodea &&\
 
 # Deploy image
 FROM python:3.8.18-slim-bookworm
+LABEL org.opencontainers.image.source="https://github.com/SouthernMethodistUniversity/pURVA"
 
 # Install Python dependencies
 COPY requirements.txt /
@@ -30,6 +31,10 @@ WORKDIR /purva
 COPY --from=build lmodea/lmodea.exe lm90.test.exe
 COPY src .
 
+# Generate Python cache and remove source
+RUN python3 -m compileall -b . &&\
+ rm *.py
+
 # Run pURVA scripts
-ENTRYPOINT ["python3", "/purva/main.py"]
+ENTRYPOINT ["python3", "/purva/main.pyc"]
 
