@@ -1,0 +1,52 @@
+
+\chapter{Before we start}
+
+It is not a good idea to have no idea about the basic copyright, history, requirement, functionality as well as theory of the program before we use it.
+
+\section{Copyright}
+
+The program pURVA as well as this manual MUST NOT be released out of CATCO group at Southern Methodist University. According to policy \textsection12.1 and \textsection12.2 of Southern Methodist University, the leakage of the intellectually property may face legal charge.
+
+\section{History}
+
+The original URVA method was implemented by Zoran Konkoli in the link L716 of Gaussian package. However, this part is never incorporated into the public version of Gaussian. Since then, many other contributors including Dr. Wenli Zou added functionalities into this part and migrated this part from older version of Gaussian into newer version of Gaussian for several times. As Gaussian package was written in Fortran 77, the corresponding URVA part was written in the same language.
+
+Later on from 2015, Dr. Dieter Cremer and Dr. Elfi Kraka wanted to have an independent version of URVA program. They asked Yunwen Tao in the group to this job. He started with programming in Fortran 90 language which is an extension to Fortran 77. Then he switched the whole project into Python language which is more flexible and easy to use. The new version of the URVA program was then named as \textbf{pURVA}. 
+
+
+
+\section{Execution of pURVA }
+The proper execution of pURVA requires Python interpreter with the version 2.7.x. Versions lower than this might lead to trouble.
+
+Here are the list of Python modules needed to run pURVA: (1) NumPy, (2) SciPy, (3) SymPy, (4) sys, (5) os, (6) copy,  (7) gc, (8) math and (9) time.
+
+Make sure that all these modules have been installed properly.
+
+
+
+pURVA expects and then reads in an external text file as the user input file. After this file is prepared, in the terminal, type in 
+
+\texttt{\$ python main.py \textit{myinputfile}}
+
+From the standard output, we could monitor how the calculation goes. The calculation results will be dumped into external text files on the disk.
+
+To make life easier, running pURVA on ManeFrame cluster is recommended as pURVA has been developed and tested on the same machine. Before running pURVA, remember to load the Python interpreter by using 
+
+\texttt{\$ module load python}
+
+
+\section{Theory as Unified Reaction Valley Approach}
+The name of ``Unified Reaction Valley Approach'' firstly appeared on scientific journals in 1997 when Konkoli, Kraka and Cremer published their comprehensive studies of CH$_3$ + H$_2$ $\rightarrow$ CH$_4$ + H on \textit{J. Phys. Chem. A}\cite{firsturva}. In that paper, one of the highlights is to introduce the approach that calculates the adiabatic mode coupling coefficient that is decomposition of reaction path curvature into adiabatic local modes which was a novel approach dealing with vibrational spectroscopy. URVA is based on the Reaction Path Hamiltonian(RPH) that was intensively developed by Miller, Handy\cite{MillerHandy}, Page and McIver\cite{PageMcIver}. In the year of 2011, Dr. Kraka published a well-written review on the relationship between RPH and URVA\cite{Krakareview}. Most recently, Dr. Zou proposed a new approach to decompose the reaction path direction and curvature into internal coordinates which opens the possibility to study chemical reactions in large systems, e.g. organometallic compounds and enzymes\cite{Zou2016}.  
+
+One of the most important papers involved in URVA is the introduction of Diabatic Mode Ordering(DMO) procedure which has now been widely used in several projects within CATCO group\cite{dmopaper}.
+
+
+
+
+
+%dmopaper
+
+
+
+
+

@@ -1,7 +1,7 @@
 #!/usr/bin/env zsh
 
 # Project-specific variables
-name="purva"
+name="urva"
 version="0.2.0"
 
 # Stop on failure

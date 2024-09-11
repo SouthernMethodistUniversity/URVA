@@ -1,5 +1,5 @@
 #
-# This is an input file for pURVA
+# This is an input file for URVA
 #
 # Control keywords:
 @DATAFILETYPE = old   # old, new, xyz
@@ -15,7 +15,7 @@
 
 @DATAFILEPATH = "./IRC.browse"  
 
-@BASEPATH = "/purva/"  
+@BASEPATH = "/urva/"
 
 #Title
 TITLE

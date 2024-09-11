@@ -6,6 +6,7 @@ import numpy as np
 import copy
 import os
 import time
+from datetime import datetime
 
 def stop(words):
     print (words)
@@ -1174,7 +1175,8 @@ def expList2File(lst1,filename):
 
 
 def catcover():
-    logfile = '/users/yunwent/share/pURVA_log-01.txt'
+    logfile = "urva_%s.log".format(
+              datetime.now().strftime("%Y_%m_%d_%H_%M_%S"))
 
     key = -1
     macname = os.uname()[1]
@@ -1757,7 +1759,7 @@ def rdcmd(inpf,cmdgui): #,oldnew,nBrowsf,oBrowsf,xyzf, \
 #    if not os.path.isdir(cmdgui.Basename):
 #        stop("Error: folder not exist- "+cmdgui.Basename)
 #    if not os.path.exists(cmdgui.Basename+"main.py"):
-#        stop("Error: could not find pURVA in "+cmdgui.Basename)
+#        stop("Error: could not find URVA in "+cmdgui.Basename)
 #    if not os.path.exists(cmdgui.Basename+"inter_removespikes_main.py"):
 #        stop("Error: RMSPK module missing in "+cmdgui.Basename)
 #    if not os.path.exists(cmdgui.Basename+"inter_autosmooth_main.py"):

@@ -1,0 +1,11 @@
+format: jb-book
+root: intro
+chapters:
+- file: abbreviations
+- file: symbols
+- file: "1"
+- file: "2"
+- file: "3"
+- file: "4"
+- file: references
+

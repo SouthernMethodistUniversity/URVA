@@ -1,0 +1,38 @@
+title: URVA Documentation
+author: Southern Methodist University (SMU) and Elfi Kraka
+logo: logo.jpg
+copyright: "2024"
+
+repository:
+  url: https://github.com/SouthernMethodistUniversity/URVA
+  path_to_book: docs
+  branch: main
+
+html:
+  use_issues_button: true
+  use_repository_button: true
+
+sphinx:
+  config:
+    bibtex_reference_style: author_year
+
+bibtex_bibfiles:
+  - references.bib
+
+parse:
+  myst_enable_extensions:
+    - amsmath
+    - attrs_inline
+    - colon_fence
+    - deflist
+    - dollarmath
+    - fieldlist
+    - html_admonition
+    - html_image
+    - linkify
+    - replacements
+    - smartquotes
+    - strikethrough
+    - substitution
+    - tasklist
+

@@ -1,19 +1,19 @@
-# This is an interface of " curcorbra " for pURVA
-# This module could be imported by pURVA directly
+# This is an interface of " curcorbra " for URVA
+# This module could be imported by URVA directly
 # However, it relies on two dependent files:
 #  1. interf-curvcor-util.py
 #  2. interf-curvcor-util2.py
 #
-# INPUT FROM pURVA:
+# INPUT FROM URVA:
 #  1. List of objects
 #  2. Number of points for correction on the left
 #  3. Number of points for correction on the right
 #
-# OUTPUT to pURVA:
+# OUTPUT to URVA:
 #  A list that contains s values along with corrected curvature value
 #
 #
-# CALLED IN pURVA:
+# CALLED IN URVA:
 #   corcurv(oBlist,Ln,Rn)
 #
 
