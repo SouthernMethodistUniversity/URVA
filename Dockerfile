@@ -1,6 +1,6 @@
-# docker build -t purva:latest .
-# docker run -it -v "$PWD:$PWD" -w "$PWD" purva:latest inp.inp
-# docker run -it --entrypoint /bin/bash purva:latest
+# docker build -t urva:latest .
+# docker run -it -v "$PWD:$PWD" -w "$PWD" urva:latest inp.inp
+# docker run -it --entrypoint /bin/bash urva:latest
 
 # Set build image
 FROM debian:bookworm-slim AS build
@@ -19,7 +19,7 @@ RUN cd lmodea &&\
 
 # Deploy image
 FROM python:3.8.18-slim-bookworm
-LABEL org.opencontainers.image.source="https://github.com/SouthernMethodistUniversity/pURVA"
+LABEL org.opencontainers.image.source="https://github.com/SouthernMethodistUniversity/URVA"
 
 # Install Python dependencies
 COPY requirements.txt /
@@ -27,7 +27,7 @@ RUN pip install -r /requirements.txt &&\
  rm /requirements.txt
 
 # Copy Python scripts and LModeA executable
-WORKDIR /purva
+WORKDIR /urva
 COPY --from=build lmodea/lmodea.exe lm90.test.exe
 COPY src .
 
@@ -35,6 +35,6 @@ COPY src .
 RUN python3 -m compileall -b . &&\
  rm *.py
 
-# Run pURVA scripts
-ENTRYPOINT ["python3", "/purva/main.pyc"]
+# Run URVA scripts
+ENTRYPOINT ["python3", "/urva/main.pyc"]
 
