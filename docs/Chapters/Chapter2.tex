@@ -1,0 +1,503 @@
+
+\chapter{Input description}
+
+There are two major types of input that are allowed in the input file. 
+
+\begin{itemize}
+   \setlength{\itemsep}{0pt}
+   \setlength{\parskip}{0pt}
+   \setlength{\parsep}{0pt} 
+    \item Keyword input
+    \item Section input
+
+\end{itemize}
+
+Besides the input file that can be edited by the users, pURVA  needs  input data files which record  necessary information along the IRC path. 
+
+
+\section{Input Browsing Data Files}
+
+The browsing files are in a compact form generated from any quantum chemistry package, e.g. Gaussian, that can do a reaction path calculation (i.e. IRC). 
+
+There are currently two types or versions of browsing file. The first one can be generated with Gaussian.
+
+In Gaussian package, the functionality to generate the first version of browsing files has been implemented in 09. D  and later versions, where we can specify IOp(1/45D=1000000) to ask the program to dump the  {URVA} input file.
+
+For the other version, which is a newer version of browsing file, only COLOGNE program (modified Gaussian links) could generate it by specifying  IOp(1/169=1). [Please confirm with Niraj Verma for the latest implementation.]
+
+%To make  \texttt{standalone URVA} work, the browsing file must take the filename of  \texttt{IRC.forward} for old version of browsing file or \texttt{for.urv} for new version of browsing file.
+
+
+
+An old version of browsing file \texttt{IRC.forward} looks like this:
+
+%%%%
+\lstset{basicstyle=\ttfamily\footnotesize,breaklines=true}
+\lstinputlisting{IRC.Forward}
+%%%%%%%
+
+
+
+
+This is all browsing information for one point along the reaction path, a complete browsing file contains many points. 
+
+\lstset{basicstyle=\ttfamily\footnotesize,breaklines=true}
+The line starting with \texttt{BEGIN} is the starting line for this point. Followed by a negative floating number which is the reaction coordinate(parameter) for the current point.
+
+The first column of numbers in \texttt{IAnZ} section is the atomic number for each atoms.
+
+The first number in \texttt{NAtom} section is the number of atoms. 
+
+The  \texttt{CC} section is the cartesian coordinates, the unit here is Bohr instead of Angstrom. It takes the dimension of \texttt{3*NAtom}.
+
+The  \texttt{FX\_ZMat\_Orientation} section is the Gradient information. It takes the dimension of \texttt{3*NAtom}.
+
+The  \texttt{FFX\_ZMat\_Orientation} section is the Hessian(Force constant) information. It takes the dimension of \texttt{3*NAtom*(3*NAtom-1)/2+3*NAtom} in a lower-triangular form.
+
+The  \texttt{IPoCou, Energy, XXIRC} section gives the label of points along the reaction path, electronic structure energy in Hartree and reaction coordinate(parameter).
+
+%\end{section}
+
+A new version of browsing file \texttt{for.urv} looks like this:
+\lstset{basicstyle=\ttfamily\footnotesize,breaklines=true}
+\lstinputlisting{for.urv}
+
+To distinguish from old browsing file, the first line is \texttt{BEGIN (no Hessian)}, indicating that this browsing file does not contains Hessian information and is a new browsing file.
+
+The second section of \texttt{Natoms,NatomQ} gives the total number of atoms in the system and number of atoms in the QM part. If the latter is smaller than the previous, it means this is an QMMM calculation. (in gaussian, it is an ONIOM calculation.)
+
+The \texttt{Atomic mass} section gives all atomic masses for atoms in the system.
+
+The \texttt{CC} section gives the cartesian coordinates information, the unit here is Bohr instead of Angstrom. It takes the dimension of \texttt{3*NAtom}.
+
+The \texttt{Tangent} section gives the mass-weighted path direction vector which has been mass-weighted. It takes the dimension of \texttt{3*NAtom}.
+
+The \texttt{Curvature} section gives the mass-weighted curvature vector which has been mass-weighted. It takes the dimension of \texttt{3*NAtom}.
+
+The \texttt{IPoCou, Energy, XXIRC} section firstly gives the point label along the reaction path, which can range from a very negative integer to a very positive integer. The second number is the electronic structure energy in Hartree. The last number is the reaction coordinate(parameter) which can range from a very negative floating number to a very positive floating number.
+
+%The \texttt{Freq Numbers(QM, ALL)} section gives the number of QM part frequencies and number of frequencies for the whole system.
+
+%The \texttt{QM Frequency} section gives the vibrational frequency values of the QM part, which takes the unit of $cm^{-1}$.
+
+%The \texttt{All Frequency} section gives the vibrational frequency values for the whole system, which takes the unit of $cm^{-1}$. And this section contains the last section of \texttt{QM Frequency}.
+
+%The \texttt{QM Imaginary Freq No.} section gives the number of imaginary frequencies with regard to the QM part.
+
+%The \texttt{QM Imaginary Normal Modes} section gives the normal mode vector of imaginary frequency vibrations in the QM part, the length of this section is \texttt{M*3*NAtom}, in which  \texttt{M} is the number of imaginary frequencies with regard to the QM part
+
+
+
+
+
+\section{Keyword input}
+Just for convenience, keyword input is often written before section input. The format of keyword input line is:
+
+\texttt{\textcolor{red}{@\textit{keyword\_name}} = \textcolor{blue}{[keyword\_value]} }
+
+The \texttt{@} symbol should be in the first column. No space is allowed after it. On both sides of = sign, it should be space. There might be several optional keyword values available, however, only one option is accepted.
+
+\subsection{\texttt{@DATAFILETYPE} keyword }
+
+This keywords specifies the format of input data source file for URVA analysis. 
+
+\texttt{\textcolor{red}{@DATAFILETYPE} = \textcolor{blue}{old/new/xyz}}
+
+\textcolor{blue}{\texttt{old}}: The input data source file is generated by Gaussian package by setting corresponding IOp(1/45). This type of data contains most complete information.
+
+\textit{NOTE: If the data file is generated by Gaussian with version number lower than 16.A, all floating numbers should be converted from "D" into "E" format. }
+
+\textcolor{blue}{\texttt{new}}: The input data source file is generated by a modified version of Gaussian package. This type of data has no Hessian and gradient stored. 
+
+\textcolor{blue}{\texttt{xyz}}: XYZ file containing the Cartesian coordinates of multiple snapshots.
+
+
+\subsection{\texttt{@DATAFILEPATH} keyword }
+This keyword specifies the path of the input data file.
+
+\texttt{\textcolor{red}{@DATAFILEPATH} = \textcolor{blue}{"../path/to/data/file"} }
+
+The quotation marks should be included.
+
+
+\subsection{\texttt{@ENERGY} keyword }
+This keyword specifies whether SCF energy and its first and second derivatives will be calculated.
+
+
+\texttt{\textcolor{red}{@ENERGY} = \textcolor{blue}{on/off}  }
+
+
+
+
+
+
+
+
+
+
+\subsection{\texttt{@PARM} keyword }
+This keyword specifies the way to deal with internal coordinates parameters provided by user.
+
+\texttt{\textcolor{red}{@PARM} = \textcolor{blue}{No/GeomOnly/All}  }
+
+\textcolor{blue}{\texttt{No}}: Do nothing with regard to these internal coordinates specifications.
+
+\textcolor{blue}{\texttt{GeomOnly}}: Only calculate the value of these internal coordinates. 
+
+
+\textcolor{blue}{\texttt{All}}: Besides the value of internal coordinates, other properties related to these internal coordinates will be calculated.
+
+
+
+\subsection{\texttt{@VIBRATION} keyword }
+This keyword specifies whether or not to do normal mode analysis.
+
+\texttt{\textcolor{red}{@VIBRATION} = \textcolor{blue}{on/off}  }
+
+If the keyword value is set to \texttt{\textcolor{blue}{on}}, the \texttt{\textcolor{red}{@DATAFILETYPE}} must be set to \texttt{\textcolor{blue}{old}}.
+% and \texttt{\textcolor{red}{@DIRCURV}} must be set to \texttt{\textcolor{blue}{on}}.
+
+
+\subsection{\texttt{@DIRCURV} keyword}
+This keyword decides whether or not to calculate reaction path direction $\boldsymbol {\eta(s)}$ and curvature $\boldsymbol {\kappa(s)}$.
+
+\texttt{\textcolor{red}{@DIRCURV} = \textcolor{blue}{on/off}  }
+
+If the keyword value is set to  \texttt{\textcolor{blue}{on}}, the \texttt{\textcolor{red}{@DATAFILETYPE}} must be set to \texttt{\textcolor{blue}{old}} or \texttt{\textcolor{blue}{new}}. 
+
+
+
+
+\subsection{\texttt{@AVAM} keyword}
+This keyword specifies whether or not to calculate the adiabatic mode coupling coefficient $\boldsymbol{ A_{n,s}(s)}$.
+
+
+\texttt{\textcolor{red}{@AVAM} = \textcolor{blue}{on/off}  }
+
+If the keyword value is set to \texttt{\textcolor{blue}{on}}, the \texttt{\textcolor{red}{@DATAFILETYPE}} must be set to \texttt{\textcolor{blue}{old}}, 
+the \texttt{\textcolor{red}{@PARM}} must be set to \texttt{\textcolor{blue}{All}},
+the \texttt{\textcolor{red}{@VIBRATION}} must be set to \texttt{\textcolor{blue}{on}} and the \texttt{\textcolor{red}{@DIRCURV}} must be set to \texttt{\textcolor{blue}{on}}
+
+
+
+
+\subsection{\texttt{@CURVCPL} keyword}
+This keyword specifies whether or not to calculate the curvature coupling coefficient $\boldsymbol{B_{\mu,s}(s)}$.
+
+\texttt{\textcolor{red}{@CURVCPL} = \textcolor{blue}{on/off}  }
+
+If the keyword value is set to \texttt{\textcolor{blue}{on}},
+the \texttt{\textcolor{red}{@DATAFILETYPE}} must be set to \texttt{\textcolor{blue}{old}}, 
+the \texttt{\textcolor{red}{@VIBRATION}} must be set to \texttt{\textcolor{blue}{on}}, 
+and the \texttt{\textcolor{red}{@DIRCURV}} must be set to \texttt{\textcolor{blue}{on}}.
+
+
+\subsection{\texttt{@CORIOLIS} keyword}
+This keyword specifies whether or not to calculate the Coriolis mode-mode coupling coefficient $\boldsymbol{B_{\mu,\nu}(s)}$.
+
+\texttt{\textcolor{red}{@CORIOLIS} = \textcolor{blue}{on/off}  }
+
+If the keyword value is set to \texttt{\textcolor{blue}{on}},
+the \texttt{\textcolor{red}{@DATAFILETYPE}} must be set to \texttt{\textcolor{blue}{old}} and the \texttt{\textcolor{red}{@VIBRATION}} must be set to \texttt{\textcolor{blue}{on}}.
+
+
+
+
+\subsection{\texttt{@ADIABFC} keyword}
+This keyword specifies whether or not to calculate adiabatic force constant $\mathbf{k^a}$.
+
+\texttt{\textcolor{red}{@ADIABFC} = \textcolor{blue}{on/off}  }
+
+If the keyword value is set to \texttt{\textcolor{blue}{on}},
+the \texttt{\textcolor{red}{@DATAFILETYPE}} must be set to \texttt{\textcolor{blue}{old}} and the \texttt{\textcolor{red}{@PARM}} must be set to \texttt{\textcolor{blue}{All}}.
+
+
+
+
+
+\section{Section input}
+Section input is used when multiple parameters need to be read in, the format of the section input is:
+
+\texttt{
+\textcolor{Purple}{SECTION\_NAME}}
+
+\texttt{
+\textcolor{red}{parameter line\_1}}
+
+\texttt{
+\textcolor{red}{parameter line\_2}}
+
+\texttt{
+\textcolor{red}{...}}
+
+\texttt{
+\textcolor{Purple}{END SECTION\_NAME}}
+
+
+\subsection{\texttt{TITLE} section  }
+This section accepts remarks provided by user. The content will be displayed in standard output.
+
+\texttt{
+\textcolor{Purple}{TITLE}}
+
+\texttt{
+\textcolor{red}{Please put remarks here.}}
+
+\texttt{
+\textcolor{red}{Multiple lines are accepted.}}
+
+\texttt{
+\textcolor{Purple}{END TITLE}}
+
+This section is quite useful to take note of the parameters we use for URVA calculations.
+
+
+
+\subsection{\texttt{PARAMETER} section }
+This section contains the internal coordinates specifications provided by the user. Different types of internal coordinates including ring coordinates are acceptable.
+
+Bond length, bond angle, dihedral angle, out-of-plane angle, pyramidalization angle, ring puckering amplitude, ring puckering phase angle, ring deformation amplitude and ring deformation phase angle are supported.   
+
+
+\texttt{
+\textcolor{Purple}{PARAMETER}}
+
+\texttt{
+\textcolor{red}{\textit{Internal coordinate specification}}}
+
+\texttt{
+\textcolor{Purple}{END PARAMETER}}
+
+Bond length:
+
+\texttt{
+\textcolor{red}{
+std $N_1$ $N_2$ : "bond\_name"
+}}
+
+Bond angle:
+
+\texttt{
+\textcolor{red}{
+std $N_1$ $N_2$ $N_3$ : "angle\_name"
+}}
+
+Dihedral angle:
+
+\texttt{
+\textcolor{red}{
+std $N_1$ $N_2$ $N_3$ $N_4$ : "dihedral\_name"
+}}
+
+Out of plane angle(the angle between the bond length $N_1$-$N_2$ and the plane $N_2$-$N_3$-$N_4$):
+
+\texttt{
+\textcolor{red}{
+oop $N_1$ $N_2$ $N_3$ $N_4$ : "out\_of\_plane\_name"
+}}
+
+
+Pyramidalization angle(the angle $\theta_P$ is related to the three bond angles $N_2$-$N_1$-$N_3$, $N_3$-$N_1$-$N_4$, $N_4$-$N_1$-$N_2$):
+
+
+\texttt{
+\textcolor{red}{
+pyr $N_1$ $N_2$ $N_3$ $N_4$ : "pyramidalization\_angle\_name"
+}}
+
+
+Radius of planar reference ring($R$)($N_{ring}$: number of ring atoms):
+
+
+\texttt{
+\textcolor{red}{
+ring $N_{ring}$ - ( $N_1$ $N_2$ ... $N_{atoms}$ ) -[0 0]: "ring\_breathing\_name"
+}}
+
+Planar deformation amplitude($t_n$)(n=1$\sim$$N_{ring}-2$):
+
+\texttt{
+\textcolor{red}{
+ring $N_{ring}$ - ( $N_1$ $N_2$ ... $N_{atoms}$ ) -[1 n]: "deformation\_amplitude\_name"
+}}
+
+Planar deformation phase angle($\tau_n$)(n=1$\sim$$N_{ring}-2$):
+
+\texttt{
+\textcolor{red}{
+ring $N_{ring}$ - ( $N_1$ $N_2$ ... $N_{atoms}$ ) -[2 n]: "deformation\_phase\_angle\_name"
+}}
+
+
+Puckering amplitude($q_n$)(n=2$\sim$($N_{ring}-1$)/2 for odd $N_{ring}$ or 2$\sim$$N_{ring}$/2 for even $N_{ring}$):
+
+\texttt{
+\textcolor{red}{
+ring $N_{ring}$ - ( $N_1$ $N_2$ ... $N_{atoms}$ ) -[3 n]: "puckering\_amplitude\_name"
+}}
+
+
+Puckering phase angle($\phi_n$)(n=2$\sim$($N_{ring}-1$)/2 for odd $N_{ring}$ or 2$\sim$$N_{ring}$/2-1 for even $N_{ring}$):
+
+
+\texttt{
+\textcolor{red}{
+ring $N_{ring}$ - ( $N_1$ $N_2$ ... $N_{atoms}$ ) -[4 n]: "puckering\_phase\_angle\_name"
+}}
+
+
+\subsection{\texttt{CURVCOR} section }
+The CURVCOR interface will be activated if this section is found.
+
+For most situations, it is usually enough for 
+\texttt{\textcolor{red}{$N_l$}} and \texttt{\textcolor{red}{$N_r$}} to take the value of 25.
+
+
+\texttt{
+\textcolor{Purple}{CURVCOR}}
+
+\texttt{
+\textcolor{red}{Ln = $N_l$}}
+
+
+\texttt{
+\textcolor{red}{Rn = $N_r$}}
+
+
+\texttt{
+\textcolor{Purple}{END CURVCOR}}
+
+
+
+\subsection{\texttt{AUTOSMTH} section }
+The AUTOSMTH interface will be activated if this section is found.
+
+AUTOSMTH interface requires the activation of CURVCOR interface.
+
+\texttt{\textcolor{red}{$\delta s$}} is the stepsize of mass-weighted IRC with the unit of amu$^{1/2}$-Bohr.
+
+Using the value of 3 is usually enough for 
+\texttt{\textcolor{red}{$N_l$}} and \texttt{\textcolor{red}{$N_r$}}.
+
+\texttt{\textcolor{red}{$t$}} is a cut-off for second derivative of smoothened curve. Increase it when necessary. Recommended value: 2.5.
+
+
+
+\texttt{
+\textcolor{Purple}{AUTOSMTH}}
+
+\texttt{
+\textcolor{red}{StepSize = $\delta s$}}
+
+\texttt{
+\textcolor{red}{Ln = $N_l$}}
+
+\texttt{
+\textcolor{red}{Rn = $N_r$}}
+
+\texttt{
+\textcolor{red}{d2ythresh = $t$}}
+
+
+\texttt{
+\textcolor{Purple}{END AUTOSMTH}}
+
+
+\subsection{\texttt{RMSPK} section }
+The RMSPK interface will be activated if this section is found.
+
+RMSPK interface requires the activation of AUTOSMTH.
+
+Any points in the curvature plot having the value larger than \texttt{\textcolor{red}{$k$}} will be left out as spike.
+
+The value of \texttt{\textcolor{red}{$p$}} ranges from 0.5 to 1.0 as a percentage number. Any points leading to consecutive difference larger than the percentile of \texttt{\textcolor{red}{$p$}} will be labeled as spike condidates. Recommened value: 0.85.
+
+Gradient check threshold \texttt{\textcolor{red}{$g$}} is used to filter out normal points from spike candidates. Recommended value: 1.2.
+
+
+
+\texttt{
+\textcolor{Purple}{RMSPK}}
+
+\texttt{
+\textcolor{red}{CutHigh = $k$}}
+
+\texttt{
+\textcolor{red}{Percentage = $p$}}
+
+
+\texttt{
+\textcolor{red}{GradRatio = $g$}}
+
+
+\texttt{
+\textcolor{Purple}{END RMSPK}}
+
+
+
+
+\subsection{\texttt{DMO} section }
+If this section input is not found, default parameter values will be used. 
+
+
+\texttt{\textcolor{red}{$s_{max}$}} is an overlap threshold after each mode reordering step. If the overlap criteria of \texttt{\textcolor{red}{$s_{max}$}} could not be reached, the criteria will be reduced to \texttt{\textcolor{red}{$s_{min}$}} gradually. Recommend values for \texttt{\textcolor{red}{$s_{max}$}} and \texttt{\textcolor{red}{$s_{min}$}}: 0.990 and 0.890.
+
+If local difficulty is encountered, linear interpolation will be adopted, space between two consecutive points will be divided into \texttt{\textcolor{red}{$N_{min}$}} pieces. If the difficulty is still not solved, \texttt{\textcolor{red}{$N_{min}$}} will be increased up to \texttt{\textcolor{red}{$N_{max}$}}. Recommended values for \texttt{\textcolor{red}{$N_{min}$}} and \texttt{\textcolor{red}{$N_{max}$}}: 30 and 200.
+
+
+If the DMO could not get through for a specific point due to the following reasons:
+
+\begin{itemize}
+   \item Change of symmetry of reaction complex, e.g. linear $\rightarrow$ non-linear 
+   \item Discontinuity of reaction path
+   \item Failure of reaction path following close to local minimum region 
+\end{itemize}
+
+one solution to circumvent this problem is to calculate and re-order the vibrational frequencies for a specific region of reaction path. This function could be activated by setting \texttt{\textcolor{red}{$IO_{cut}$}} to 1. In this way, the reaction path with its $\mathbf{s}$ value ranging from \texttt{\textcolor{red}{$s_{start}$}} to \texttt{\textcolor{red}{$s_{end}$}} will have vibrational frequencies calculated.
+
+In some situations, due to the innate difficulty of path following algorithm, the DMO might fail at the transition state(TS) point. And also the first point off TS point in either forward or reverse direction might also lead to problems. In order to remediate this problem, we can skip a few points in that region by setting \texttt{\textcolor{red}{$IO_{skip}$}} to 1. If one point off the TS point in reverse(or forward) direction also needs to be skipped, \texttt{\textcolor{red}{$N_{left}$}}( or \texttt{\textcolor{red}{$N_{right}$}}) should be set to 1. 
+
+
+
+
+\texttt{
+\textcolor{Purple}{DMO}}
+
+\texttt{
+\textcolor{red}{Sthresh = $s_{max}$}}
+
+\texttt{
+\textcolor{red}{Slowest = $s_{min}$}}
+
+
+\texttt{
+\textcolor{red}{Np = $N_{min}$}}
+
+
+\texttt{
+\textcolor{red}{NMax = $N_{max}$}}
+
+
+\texttt{
+\textcolor{red}{Cut = $IO_{cut}$}}
+
+\texttt{
+\textcolor{red}{CutA = $s_{start}$}}
+
+\texttt{
+    \textcolor{red}{CutB = $s_{end}$}}
+
+
+\texttt{
+\textcolor{red}{Skip = $IO_{skip}$}}
+
+\texttt{
+\textcolor{red}{SkipA = $N_{left}$}}
+
+\texttt{
+\textcolor{red}{SkipB = $N_{right}$}}
+
+\texttt{
+\textcolor{Purple}{END DMO}}
+
+
