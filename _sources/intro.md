@@ -1,5 +1,0 @@
-# URVA Documentation
-
-```{tableofcontents}
-```
-
