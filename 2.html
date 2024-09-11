@@ -1,0 +1,890 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="./" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Input description &#8212; URVA Documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '2';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Output description" href="3.html" />
+    <link rel="prev" title="Before we start" href="1.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/logo.jpg" class="logo__image only-light" alt="URVA Documentation - Home"/>
+    <script>document.write(`<img src="_static/logo.jpg" class="logo__image only-dark" alt="URVA Documentation - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
+                    URVA Documentation
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="abbreviations.html">Abbreviations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="symbols.html">Symbols</a></li>
+<li class="toctree-l1"><a class="reference internal" href="1.html">Before we start</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Input description</a></li>
+<li class="toctree-l1"><a class="reference internal" href="3.html">Output description</a></li>
+<li class="toctree-l1"><a class="reference internal" href="4.html">Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="references.html">References</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/SouthernMethodistUniversity/URVA" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/SouthernMethodistUniversity/URVA/issues/new?title=Issue%20on%20page%20%2F2.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/2.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Input description</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#input-browsing-data-files">Input Browsing Data Files</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#keyword-input">Keyword input</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#datafiletype-keyword"><code class="docutils literal notranslate"><span class="pre">@DATAFILETYPE</span></code> keyword</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#datafilepath-keyword"><code class="docutils literal notranslate"><span class="pre">@DATAFILEPATH</span></code> keyword</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#energy-keyword"><code class="docutils literal notranslate"><span class="pre">@ENERGY</span></code> keyword</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#parm-keyword"><code class="docutils literal notranslate"><span class="pre">@PARM</span></code> keyword</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#vibration-keyword"><code class="docutils literal notranslate"><span class="pre">@VIBRATION</span></code> keyword</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dircurv-keyword"><code class="docutils literal notranslate"><span class="pre">@DIRCURV</span></code> keyword</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#avam-keyword"><code class="docutils literal notranslate"><span class="pre">@AVAM</span></code> keyword</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#curvcpl-keyword"><code class="docutils literal notranslate"><span class="pre">@CURVCPL</span></code> keyword</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#coriolis-keyword"><code class="docutils literal notranslate"><span class="pre">@CORIOLIS</span></code> keyword</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#adiabfc-keyword"><code class="docutils literal notranslate"><span class="pre">@ADIABFC</span></code> keyword</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#section-input">Section input</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#title-section"><code class="docutils literal notranslate"><span class="pre">TITLE</span></code> section</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#parameter-section"><code class="docutils literal notranslate"><span class="pre">PARAMETER</span></code> section</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#curvcor-section"><code class="docutils literal notranslate"><span class="pre">CURVCOR</span></code> section</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#autosmth-section"><code class="docutils literal notranslate"><span class="pre">AUTOSMTH</span></code> section</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rmspk-section"><code class="docutils literal notranslate"><span class="pre">RMSPK</span></code> section</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dmo-section"><code class="docutils literal notranslate"><span class="pre">DMO</span></code> section</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="input-description">
+<h1>Input description<a class="headerlink" href="#input-description" title="Link to this heading">#</a></h1>
+<p>There are two major types of input that are allowed in the input file.</p>
+<ul class="simple">
+<li><p>Keyword input</p></li>
+<li><p>Section input</p></li>
+</ul>
+<p>Besides the input file that can be edited by the users, URVA needs
+input data files which record necessary information along the IRC path.</p>
+<section id="input-browsing-data-files">
+<h2>Input Browsing Data Files<a class="headerlink" href="#input-browsing-data-files" title="Link to this heading">#</a></h2>
+<p>The browsing files are in a compact form generated from any quantum
+chemistry package, e.g. Gaussian, that can do a reaction path
+calculation (i.e. IRC).</p>
+<p>There are currently two types or versions of browsing file. The first
+one can be generated with Gaussian.</p>
+<p>In Gaussian package, the functionality to generate the first version of
+browsing files has been implemented in 09. D and later versions, where
+we can specify IOp(1/45D=1000000) to ask the program to dump the URVA
+input file.</p>
+<p>For the other version, which is a newer version of browsing file, only
+COLOGNE program (modified Gaussian links) could generate it by
+specifying IOp(1/169=1). [Please confirm with Niraj Verma for the latest
+implementation.]</p>
+<p>An old version of browsing file <code class="docutils literal notranslate"><span class="pre">IRC.forward</span></code> looks like this:</p>
+<p>This is all browsing information for one point along the reaction path,
+a complete browsing file contains many points.</p>
+<p>The line starting with <code class="docutils literal notranslate"><span class="pre">BEGIN</span></code> is the starting line for this point.
+Followed by a negative floating number which is the reaction
+coordinate(parameter) for the current point.</p>
+<p>The first column of numbers in <code class="docutils literal notranslate"><span class="pre">IAnZ</span></code> section is the atomic number for
+each atoms.</p>
+<p>The first number in <code class="docutils literal notranslate"><span class="pre">NAtom</span></code> section is the number of atoms.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">CC</span></code> section is the cartesian coordinates, the unit here is Bohr
+instead of Angstrom. It takes the dimension of <code class="docutils literal notranslate"><span class="pre">3*NAtom</span></code>.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">FX_ZMat_Orientation</span></code> section is the Gradient information. It
+takes the dimension of <code class="docutils literal notranslate"><span class="pre">3*NAtom</span></code>.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">FFX_ZMat_Orientation</span></code> section is the Hessian(Force constant)
+information. It takes the dimension of <code class="docutils literal notranslate"><span class="pre">3*NAtom*(3*NAtom-1)/2+3*NAtom</span></code>
+in a lower-triangular form.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">IPoCou,</span> <span class="pre">Energy,</span> <span class="pre">XXIRC</span></code> section gives the label of points along
+the reaction path, electronic structure energy in Hartree and reaction
+coordinate(parameter).</p>
+<p>A new version of browsing file <code class="docutils literal notranslate"><span class="pre">for.urv</span></code> looks like this:</p>
+<p>To distinguish from old browsing file, the first line is
+<code class="docutils literal notranslate"><span class="pre">BEGIN</span> <span class="pre">(no</span> <span class="pre">Hessian)</span></code>, indicating that this browsing file does not
+contains Hessian information and is a new browsing file.</p>
+<p>The second section of <code class="docutils literal notranslate"><span class="pre">Natoms,NatomQ</span></code> gives the total number of atoms
+in the system and number of atoms in the QM part. If the latter is
+smaller than the previous, it means this is an QMMM calculation. (in
+gaussian, it is an ONIOM calculation.)</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">Atomic</span> <span class="pre">mass</span></code> section gives all atomic masses for atoms in the
+system.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">CC</span></code> section gives the cartesian coordinates information, the unit
+here is Bohr instead of Angstrom. It takes the dimension of <code class="docutils literal notranslate"><span class="pre">3*NAtom</span></code>.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">Tangent</span></code> section gives the mass-weighted path direction vector
+which has been mass-weighted. It takes the dimension of <code class="docutils literal notranslate"><span class="pre">3*NAtom</span></code>.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">Curvature</span></code> section gives the mass-weighted curvature vector which
+has been mass-weighted. It takes the dimension of <code class="docutils literal notranslate"><span class="pre">3*NAtom</span></code>.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">IPoCou,</span> <span class="pre">Energy,</span> <span class="pre">XXIRC</span></code> section firstly gives the point label
+along the reaction path, which can range from a very negative integer to
+a very positive integer. The second number is the electronic structure
+energy in Hartree. The last number is the reaction coordinate(parameter)
+which can range from a very negative floating number to a very positive
+floating number.</p>
+</section>
+<section id="keyword-input">
+<h2>Keyword input<a class="headerlink" href="#keyword-input" title="Link to this heading">#</a></h2>
+<p>Just for convenience, keyword input is often written before section
+input. The format of keyword input line is:</p>
+<p><code class="docutils literal notranslate"><span class="pre">&#64;``keyword_name``=``[keyword_value]</span></code></p>
+<p>The <code class="docutils literal notranslate"><span class="pre">&#64;</span></code> symbol should be in the first column. No space is allowed
+after it. On both sides of = sign, it should be space. There might be
+several optional keyword values available, however, only one option is
+accepted.</p>
+<section id="datafiletype-keyword">
+<h3><code class="docutils literal notranslate"><span class="pre">&#64;DATAFILETYPE</span></code> keyword<a class="headerlink" href="#datafiletype-keyword" title="Link to this heading">#</a></h3>
+<p>This keywords specifies the format of input data source file for URVA
+analysis.</p>
+<p><code class="docutils literal notranslate"><span class="pre">&#64;DATAFILETYPE``=``old/new/xyz</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">old</span></code>: The input data source file is generated by Gaussian package by
+setting corresponding IOp(1/45). This type of data contains most
+complete information.</p>
+<p><em>NOTE: If the data file is generated by Gaussian with version number
+lower than 16.A, all floating numbers should be converted from “D” into
+“E” format.</em></p>
+<p><code class="docutils literal notranslate"><span class="pre">new</span></code>: The input data source file is generated by a modified version
+of Gaussian package. This type of data has no Hessian and gradient
+stored.</p>
+<p><code class="docutils literal notranslate"><span class="pre">xyz</span></code>: XYZ file containing the Cartesian coordinates of multiple
+snapshots.</p>
+</section>
+<section id="datafilepath-keyword">
+<h3><code class="docutils literal notranslate"><span class="pre">&#64;DATAFILEPATH</span></code> keyword<a class="headerlink" href="#datafilepath-keyword" title="Link to this heading">#</a></h3>
+<p>This keyword specifies the path of the input data file.</p>
+<p><code class="docutils literal notranslate"><span class="pre">&#64;DATAFILEPATH``=``&quot;../path/to/data/file&quot;</span></code></p>
+<p>The quotation marks should be included.</p>
+</section>
+<section id="energy-keyword">
+<h3><code class="docutils literal notranslate"><span class="pre">&#64;ENERGY</span></code> keyword<a class="headerlink" href="#energy-keyword" title="Link to this heading">#</a></h3>
+<p>This keyword specifies whether SCF energy and its first and second
+derivatives will be calculated.</p>
+<p><code class="docutils literal notranslate"><span class="pre">&#64;ENERGY``=``on/off</span></code></p>
+</section>
+<section id="parm-keyword">
+<h3><code class="docutils literal notranslate"><span class="pre">&#64;PARM</span></code> keyword<a class="headerlink" href="#parm-keyword" title="Link to this heading">#</a></h3>
+<p>This keyword specifies the way to deal with internal coordinates
+parameters provided by user.</p>
+<p><code class="docutils literal notranslate"><span class="pre">&#64;PARM``=``No/GeomOnly/All</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">No</span></code>: Do nothing with regard to these internal coordinates
+specifications.</p>
+<p><code class="docutils literal notranslate"><span class="pre">GeomOnly</span></code>: Only calculate the value of these internal coordinates.</p>
+<p><code class="docutils literal notranslate"><span class="pre">All</span></code>: Besides the value of internal coordinates, other properties
+related to these internal coordinates will be calculated.</p>
+</section>
+<section id="vibration-keyword">
+<h3><code class="docutils literal notranslate"><span class="pre">&#64;VIBRATION</span></code> keyword<a class="headerlink" href="#vibration-keyword" title="Link to this heading">#</a></h3>
+<p>This keyword specifies whether or not to do normal mode analysis.</p>
+<p><code class="docutils literal notranslate"><span class="pre">&#64;VIBRATION``=``on/off</span></code></p>
+<p>If the keyword value is set to <code class="docutils literal notranslate"><span class="pre">on</span></code>, the <code class="docutils literal notranslate"><span class="pre">&#64;DATAFILETYPE</span></code> must be set
+to <code class="docutils literal notranslate"><span class="pre">old</span></code>.</p>
+</section>
+<section id="dircurv-keyword">
+<h3><code class="docutils literal notranslate"><span class="pre">&#64;DIRCURV</span></code> keyword<a class="headerlink" href="#dircurv-keyword" title="Link to this heading">#</a></h3>
+<p>This keyword decides whether or not to calculate reaction path direction
+<span class="math notranslate nohighlight">\(\boldsymbol {\eta(s)}\)</span> and curvature
+<span class="math notranslate nohighlight">\(\boldsymbol {\kappa(s)}\)</span>.</p>
+<p><code class="docutils literal notranslate"><span class="pre">&#64;DIRCURV``=``on/off</span></code></p>
+<p>If the keyword value is set to <code class="docutils literal notranslate"><span class="pre">on</span></code>, the <code class="docutils literal notranslate"><span class="pre">&#64;DATAFILETYPE</span></code> must be set
+to <code class="docutils literal notranslate"><span class="pre">old</span></code> or <code class="docutils literal notranslate"><span class="pre">new</span></code>.</p>
+</section>
+<section id="avam-keyword">
+<h3><code class="docutils literal notranslate"><span class="pre">&#64;AVAM</span></code> keyword<a class="headerlink" href="#avam-keyword" title="Link to this heading">#</a></h3>
+<p>This keyword specifies whether or not to calculate the adiabatic mode
+coupling coefficient <span class="math notranslate nohighlight">\(\boldsymbol{ A_{n,s}(s)}\)</span>.</p>
+<p><code class="docutils literal notranslate"><span class="pre">&#64;AVAM``=``on/off</span></code></p>
+<p>If the keyword value is set to <code class="docutils literal notranslate"><span class="pre">on</span></code>, the <code class="docutils literal notranslate"><span class="pre">&#64;DATAFILETYPE</span></code> must be set
+to <code class="docutils literal notranslate"><span class="pre">old</span></code>, the <code class="docutils literal notranslate"><span class="pre">&#64;PARM</span></code> must be set to <code class="docutils literal notranslate"><span class="pre">All</span></code>, the <code class="docutils literal notranslate"><span class="pre">&#64;VIBRATION</span></code>
+must be set to <code class="docutils literal notranslate"><span class="pre">on</span></code> and the <code class="docutils literal notranslate"><span class="pre">&#64;DIRCURV</span></code> must be set to <code class="docutils literal notranslate"><span class="pre">on</span></code></p>
+</section>
+<section id="curvcpl-keyword">
+<h3><code class="docutils literal notranslate"><span class="pre">&#64;CURVCPL</span></code> keyword<a class="headerlink" href="#curvcpl-keyword" title="Link to this heading">#</a></h3>
+<p>This keyword specifies whether or not to calculate the curvature
+coupling coefficient <span class="math notranslate nohighlight">\(\boldsymbol{B_{\mu,s}(s)}\)</span>.</p>
+<p><code class="docutils literal notranslate"><span class="pre">&#64;CURVCPL``=``on/off</span></code></p>
+<p>If the keyword value is set to <code class="docutils literal notranslate"><span class="pre">on</span></code>, the <code class="docutils literal notranslate"><span class="pre">&#64;DATAFILETYPE</span></code> must be set
+to <code class="docutils literal notranslate"><span class="pre">old</span></code>, the <code class="docutils literal notranslate"><span class="pre">&#64;VIBRATION</span></code> must be set to <code class="docutils literal notranslate"><span class="pre">on</span></code>, and the
+<code class="docutils literal notranslate"><span class="pre">&#64;DIRCURV</span></code> must be set to <code class="docutils literal notranslate"><span class="pre">on</span></code>.</p>
+</section>
+<section id="coriolis-keyword">
+<h3><code class="docutils literal notranslate"><span class="pre">&#64;CORIOLIS</span></code> keyword<a class="headerlink" href="#coriolis-keyword" title="Link to this heading">#</a></h3>
+<p>This keyword specifies whether or not to calculate the Coriolis
+mode-mode coupling coefficient <span class="math notranslate nohighlight">\(\boldsymbol{B_{\mu,\nu}(s)}\)</span>.</p>
+<p><code class="docutils literal notranslate"><span class="pre">&#64;CORIOLIS``=``on/off</span></code></p>
+<p>If the keyword value is set to <code class="docutils literal notranslate"><span class="pre">on</span></code>, the <code class="docutils literal notranslate"><span class="pre">&#64;DATAFILETYPE</span></code> must be set
+to <code class="docutils literal notranslate"><span class="pre">old</span></code> and the <code class="docutils literal notranslate"><span class="pre">&#64;VIBRATION</span></code> must be set to <code class="docutils literal notranslate"><span class="pre">on</span></code>.</p>
+</section>
+<section id="adiabfc-keyword">
+<h3><code class="docutils literal notranslate"><span class="pre">&#64;ADIABFC</span></code> keyword<a class="headerlink" href="#adiabfc-keyword" title="Link to this heading">#</a></h3>
+<p>This keyword specifies whether or not to calculate adiabatic force
+constant <span class="math notranslate nohighlight">\(\mathbf{k^a}\)</span>.</p>
+<p><code class="docutils literal notranslate"><span class="pre">&#64;ADIABFC``=``on/off</span></code></p>
+<p>If the keyword value is set to <code class="docutils literal notranslate"><span class="pre">on</span></code>, the <code class="docutils literal notranslate"><span class="pre">&#64;DATAFILETYPE</span></code> must be set
+to <code class="docutils literal notranslate"><span class="pre">old</span></code> and the <code class="docutils literal notranslate"><span class="pre">&#64;PARM</span></code> must be set to <code class="docutils literal notranslate"><span class="pre">All</span></code>.</p>
+</section>
+</section>
+<section id="section-input">
+<h2>Section input<a class="headerlink" href="#section-input" title="Link to this heading">#</a></h2>
+<p>Section input is used when multiple parameters need to be read in, the
+format of the section input is:</p>
+<p><code class="docutils literal notranslate"><span class="pre">\</span> <span class="pre">``SECTION_NAME</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">\</span> <span class="pre">``parameter</span> <span class="pre">line_1</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">\</span> <span class="pre">``parameter</span> <span class="pre">line_2</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">\</span> <span class="pre">``...</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">\</span> <span class="pre">``END</span> <span class="pre">SECTION_NAME</span></code></p>
+<section id="title-section">
+<h3><code class="docutils literal notranslate"><span class="pre">TITLE</span></code> section<a class="headerlink" href="#title-section" title="Link to this heading">#</a></h3>
+<p>This section accepts remarks provided by user. The content will be
+displayed in standard output.</p>
+<p><code class="docutils literal notranslate"><span class="pre">\</span> <span class="pre">``TITLE</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">\</span> <span class="pre">``Please</span> <span class="pre">put</span> <span class="pre">remarks</span> <span class="pre">here.</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">\</span> <span class="pre">``Multiple</span> <span class="pre">lines</span> <span class="pre">are</span> <span class="pre">accepted.</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">\</span> <span class="pre">``END</span> <span class="pre">TITLE</span></code></p>
+<p>This section is quite useful to take note of the parameters we use for
+URVA calculations.</p>
+</section>
+<section id="parameter-section">
+<h3><code class="docutils literal notranslate"><span class="pre">PARAMETER</span></code> section<a class="headerlink" href="#parameter-section" title="Link to this heading">#</a></h3>
+<p>This section contains the internal coordinates specifications provided
+by the user. Different types of internal coordinates including ring
+coordinates are acceptable.</p>
+<p>Bond length, bond angle, dihedral angle, out-of-plane angle,
+pyramidalization angle, ring puckering amplitude, ring puckering phase
+angle, ring deformation amplitude and ring deformation phase angle are
+supported.</p>
+<p><code class="docutils literal notranslate"><span class="pre">\</span> <span class="pre">``PARAMETER</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">\</span> <span class="pre">``Internal</span> <span class="pre">coordinate</span> <span class="pre">specification</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">\</span> <span class="pre">``END</span> <span class="pre">PARAMETER</span></code></p>
+<p>Bond length:</p>
+<p><code class="docutils literal notranslate"><span class="pre">\</span> <span class="pre">``std</span></code><span class="math notranslate nohighlight">\(N_1\)</span><code class="docutils literal notranslate"><span class="pre">\</span> <span class="pre">:math:`N_2`\</span> <span class="pre">``:</span> <span class="pre">&quot;bond_name&quot;</span></code></p>
+<p>Bond angle:</p>
+<p><code class="docutils literal notranslate"><span class="pre">\</span> <span class="pre">``std</span></code><span class="math notranslate nohighlight">\(N_1\)</span><code class="docutils literal notranslate"><span class="pre">\</span> <span class="pre">:math:`N_2`\</span> <span class="pre">``</span></code><span class="math notranslate nohighlight">\(N_3\)</span><code class="docutils literal notranslate"><span class="pre">:</span> <span class="pre">&quot;angle_name&quot;</span></code></p>
+<p>Dihedral angle:</p>
+<p><code class="docutils literal notranslate"><span class="pre">\</span> <span class="pre">``std</span></code><span class="math notranslate nohighlight">\(N_1\)</span><code class="docutils literal notranslate"><span class="pre">\</span> <span class="pre">:math:`N_2`\</span> <span class="pre">``</span></code><span class="math notranslate nohighlight">\(N_3\)</span><code class="docutils literal notranslate"><span class="pre">\</span> <span class="pre">:math:`N_4`\</span> <span class="pre">``:</span> <span class="pre">&quot;dihedral_name&quot;</span></code></p>
+<p>Out of plane angle(the angle between the bond length
+<span class="math notranslate nohighlight">\(N_1\)</span>-<span class="math notranslate nohighlight">\(N_2\)</span> and the plane
+<span class="math notranslate nohighlight">\(N_2\)</span>-<span class="math notranslate nohighlight">\(N_3\)</span>-<span class="math notranslate nohighlight">\(N_4\)</span>):</p>
+<p><code class="docutils literal notranslate"><span class="pre">\</span> <span class="pre">``oop</span></code><span class="math notranslate nohighlight">\(N_1\)</span><code class="docutils literal notranslate"><span class="pre">\</span> <span class="pre">:math:`N_2`\</span> <span class="pre">``</span></code><span class="math notranslate nohighlight">\(N_3\)</span><code class="docutils literal notranslate"><span class="pre">\</span> <span class="pre">:math:`N_4`\</span> <span class="pre">``:</span> <span class="pre">&quot;out_of_plane_name&quot;</span></code></p>
+<p>Pyramidalization angle(the angle <span class="math notranslate nohighlight">\(\theta_P\)</span> is related to the
+three bond angles <span class="math notranslate nohighlight">\(N_2\)</span>-<span class="math notranslate nohighlight">\(N_1\)</span>-<span class="math notranslate nohighlight">\(N_3\)</span>,
+<span class="math notranslate nohighlight">\(N_3\)</span>-<span class="math notranslate nohighlight">\(N_1\)</span>-<span class="math notranslate nohighlight">\(N_4\)</span>,
+<span class="math notranslate nohighlight">\(N_4\)</span>-<span class="math notranslate nohighlight">\(N_1\)</span>-<span class="math notranslate nohighlight">\(N_2\)</span>):</p>
+<p><code class="docutils literal notranslate"><span class="pre">\</span> <span class="pre">``pyr</span></code><span class="math notranslate nohighlight">\(N_1\)</span><code class="docutils literal notranslate"><span class="pre">\</span> <span class="pre">:math:`N_2`\</span> <span class="pre">``</span></code><span class="math notranslate nohighlight">\(N_3\)</span><code class="docutils literal notranslate"><span class="pre">\</span> <span class="pre">:math:`N_4`\</span> <span class="pre">``:</span> <span class="pre">&quot;pyramidalization_angle_name&quot;</span></code></p>
+<p>Radius of planar reference ring(<span class="math notranslate nohighlight">\(R\)</span>)(<span class="math notranslate nohighlight">\(N_{ring}\)</span>: number of
+ring atoms):</p>
+<p><code class="docutils literal notranslate"><span class="pre">\</span> <span class="pre">``ring</span></code><span class="math notranslate nohighlight">\(N_{ring}\)</span><code class="docutils literal notranslate"><span class="pre">-</span> <span class="pre">(</span></code><span class="math notranslate nohighlight">\(N_1\)</span><code class="docutils literal notranslate"><span class="pre">\</span> <span class="pre">:math:`N_2`\</span> <span class="pre">``...</span></code><span class="math notranslate nohighlight">\(N_{atoms}\)</span><code class="docutils literal notranslate"><span class="pre">)</span> <span class="pre">-[0</span> <span class="pre">0]:</span> <span class="pre">&quot;ring_breathing_name&quot;</span></code></p>
+<p>Planar deformation
+amplitude(<span class="math notranslate nohighlight">\(t_n\)</span>)(n=1<span class="math notranslate nohighlight">\(\sim\)</span><span class="math notranslate nohighlight">\(N_{ring}-2\)</span>):</p>
+<p><code class="docutils literal notranslate"><span class="pre">\</span> <span class="pre">``ring</span></code><span class="math notranslate nohighlight">\(N_{ring}\)</span><code class="docutils literal notranslate"><span class="pre">-</span> <span class="pre">(</span></code><span class="math notranslate nohighlight">\(N_1\)</span><code class="docutils literal notranslate"><span class="pre">\</span> <span class="pre">:math:`N_2`\</span> <span class="pre">``...</span></code><span class="math notranslate nohighlight">\(N_{atoms}\)</span><code class="docutils literal notranslate"><span class="pre">)</span> <span class="pre">-[1</span> <span class="pre">n]:</span> <span class="pre">&quot;deformation_amplitude_name&quot;</span></code></p>
+<p>Planar deformation phase
+angle(<span class="math notranslate nohighlight">\(\tau_n\)</span>)(n=1<span class="math notranslate nohighlight">\(\sim\)</span><span class="math notranslate nohighlight">\(N_{ring}-2\)</span>):</p>
+<p><code class="docutils literal notranslate"><span class="pre">\</span> <span class="pre">``ring</span></code><span class="math notranslate nohighlight">\(N_{ring}\)</span><code class="docutils literal notranslate"><span class="pre">-</span> <span class="pre">(</span></code><span class="math notranslate nohighlight">\(N_1\)</span><code class="docutils literal notranslate"><span class="pre">\</span> <span class="pre">:math:`N_2`\</span> <span class="pre">``...</span></code><span class="math notranslate nohighlight">\(N_{atoms}\)</span><code class="docutils literal notranslate"><span class="pre">)</span> <span class="pre">-[2</span> <span class="pre">n]:</span> <span class="pre">&quot;deformation_phase_angle_name&quot;</span></code></p>
+<p>Puckering
+amplitude(<span class="math notranslate nohighlight">\(q_n\)</span>)(n=2<span class="math notranslate nohighlight">\(\sim\)</span>(<span class="math notranslate nohighlight">\(N_{ring}-1\)</span>)/2 for odd
+<span class="math notranslate nohighlight">\(N_{ring}\)</span> or 2<span class="math notranslate nohighlight">\(\sim\)</span><span class="math notranslate nohighlight">\(N_{ring}\)</span>/2 for even
+<span class="math notranslate nohighlight">\(N_{ring}\)</span>):</p>
+<p><code class="docutils literal notranslate"><span class="pre">\</span> <span class="pre">``ring</span></code><span class="math notranslate nohighlight">\(N_{ring}\)</span><code class="docutils literal notranslate"><span class="pre">-</span> <span class="pre">(</span></code><span class="math notranslate nohighlight">\(N_1\)</span><code class="docutils literal notranslate"><span class="pre">\</span> <span class="pre">:math:`N_2`\</span> <span class="pre">``...</span></code><span class="math notranslate nohighlight">\(N_{atoms}\)</span><code class="docutils literal notranslate"><span class="pre">)</span> <span class="pre">-[3</span> <span class="pre">n]:</span> <span class="pre">&quot;puckering_amplitude_name&quot;</span></code></p>
+<p>Puckering phase
+angle(<span class="math notranslate nohighlight">\(\phi_n\)</span>)(n=2<span class="math notranslate nohighlight">\(\sim\)</span>(<span class="math notranslate nohighlight">\(N_{ring}-1\)</span>)/2 for odd
+<span class="math notranslate nohighlight">\(N_{ring}\)</span> or 2<span class="math notranslate nohighlight">\(\sim\)</span><span class="math notranslate nohighlight">\(N_{ring}\)</span>/2-1 for even
+<span class="math notranslate nohighlight">\(N_{ring}\)</span>):</p>
+<p><code class="docutils literal notranslate"><span class="pre">\</span> <span class="pre">``ring</span></code><span class="math notranslate nohighlight">\(N_{ring}\)</span><code class="docutils literal notranslate"><span class="pre">-</span> <span class="pre">(</span></code><span class="math notranslate nohighlight">\(N_1\)</span><code class="docutils literal notranslate"><span class="pre">\</span> <span class="pre">:math:`N_2`\</span> <span class="pre">``...</span></code><span class="math notranslate nohighlight">\(N_{atoms}\)</span><code class="docutils literal notranslate"><span class="pre">)</span> <span class="pre">-[4</span> <span class="pre">n]:</span> <span class="pre">&quot;puckering_phase_angle_name&quot;</span></code></p>
+</section>
+<section id="curvcor-section">
+<h3><code class="docutils literal notranslate"><span class="pre">CURVCOR</span></code> section<a class="headerlink" href="#curvcor-section" title="Link to this heading">#</a></h3>
+<p>The CURVCOR interface will be activated if this section is found.</p>
+<p>For most situations, it is usually enough for <span class="math notranslate nohighlight">\(N_l\)</span> and
+<span class="math notranslate nohighlight">\(N_r\)</span> to take the value of 25.</p>
+<p><code class="docutils literal notranslate"><span class="pre">\</span> <span class="pre">``CURVCOR</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">\</span> <span class="pre">``Ln</span> <span class="pre">=</span></code><span class="math notranslate nohighlight">\(N_l\)</span></p>
+<p><code class="docutils literal notranslate"><span class="pre">\</span> <span class="pre">``Rn</span> <span class="pre">=</span></code><span class="math notranslate nohighlight">\(N_r\)</span></p>
+<p><code class="docutils literal notranslate"><span class="pre">\</span> <span class="pre">``END</span> <span class="pre">CURVCOR</span></code></p>
+</section>
+<section id="autosmth-section">
+<h3><code class="docutils literal notranslate"><span class="pre">AUTOSMTH</span></code> section<a class="headerlink" href="#autosmth-section" title="Link to this heading">#</a></h3>
+<p>The AUTOSMTH interface will be activated if this section is found.</p>
+<p>AUTOSMTH interface requires the activation of CURVCOR interface.</p>
+<p><span class="math notranslate nohighlight">\(\delta s\)</span> is the stepsize of mass-weighted IRC with the unit of
+amu<span class="math notranslate nohighlight">\(^{1/2}\)</span>-Bohr.</p>
+<p>Using the value of 3 is usually enough for <span class="math notranslate nohighlight">\(N_l\)</span> and <span class="math notranslate nohighlight">\(N_r\)</span>.</p>
+<p><span class="math notranslate nohighlight">\(t\)</span> is a cut-off for second derivative of smoothened curve.
+Increase it when necessary. Recommended value: 2.5.</p>
+<p><code class="docutils literal notranslate"><span class="pre">\</span> <span class="pre">``AUTOSMTH</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">\</span> <span class="pre">``StepSize</span> <span class="pre">=</span></code><span class="math notranslate nohighlight">\(\delta s\)</span></p>
+<p><code class="docutils literal notranslate"><span class="pre">\</span> <span class="pre">``Ln</span> <span class="pre">=</span></code><span class="math notranslate nohighlight">\(N_l\)</span></p>
+<p><code class="docutils literal notranslate"><span class="pre">\</span> <span class="pre">``Rn</span> <span class="pre">=</span></code><span class="math notranslate nohighlight">\(N_r\)</span></p>
+<p><code class="docutils literal notranslate"><span class="pre">\</span> <span class="pre">``d2ythresh</span> <span class="pre">=</span></code><span class="math notranslate nohighlight">\(t\)</span></p>
+<p><code class="docutils literal notranslate"><span class="pre">\</span> <span class="pre">``END</span> <span class="pre">AUTOSMTH</span></code></p>
+</section>
+<section id="rmspk-section">
+<h3><code class="docutils literal notranslate"><span class="pre">RMSPK</span></code> section<a class="headerlink" href="#rmspk-section" title="Link to this heading">#</a></h3>
+<p>The RMSPK interface will be activated if this section is found.</p>
+<p>RMSPK interface requires the activation of AUTOSMTH.</p>
+<p>Any points in the curvature plot having the value larger than <span class="math notranslate nohighlight">\(k\)</span>
+will be left out as spike.</p>
+<p>The value of <span class="math notranslate nohighlight">\(p\)</span> ranges from 0.5 to 1.0 as a percentage number.
+Any points leading to consecutive difference larger than the percentile
+of <span class="math notranslate nohighlight">\(p\)</span> will be labeled as spike condidates. Recommened value:
+0.85.</p>
+<p>Gradient check threshold <span class="math notranslate nohighlight">\(g\)</span> is used to filter out normal points
+from spike candidates. Recommended value: 1.2.</p>
+<p><code class="docutils literal notranslate"><span class="pre">\</span> <span class="pre">``RMSPK</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">\</span> <span class="pre">``CutHigh</span> <span class="pre">=</span></code><span class="math notranslate nohighlight">\(k\)</span></p>
+<p><code class="docutils literal notranslate"><span class="pre">\</span> <span class="pre">``Percentage</span> <span class="pre">=</span></code><span class="math notranslate nohighlight">\(p\)</span></p>
+<p><code class="docutils literal notranslate"><span class="pre">\</span> <span class="pre">``GradRatio</span> <span class="pre">=</span></code><span class="math notranslate nohighlight">\(g\)</span></p>
+<p><code class="docutils literal notranslate"><span class="pre">\</span> <span class="pre">``END</span> <span class="pre">RMSPK</span></code></p>
+</section>
+<section id="dmo-section">
+<h3><code class="docutils literal notranslate"><span class="pre">DMO</span></code> section<a class="headerlink" href="#dmo-section" title="Link to this heading">#</a></h3>
+<p>If this section input is not found, default parameter values will be
+used.</p>
+<p><span class="math notranslate nohighlight">\(s_{max}\)</span> is an overlap threshold after each mode reordering step.
+If the overlap criteria of <span class="math notranslate nohighlight">\(s_{max}\)</span> could not be reached, the
+criteria will be reduced to <span class="math notranslate nohighlight">\(s_{min}\)</span> gradually. Recommend values
+for <span class="math notranslate nohighlight">\(s_{max}\)</span> and <span class="math notranslate nohighlight">\(s_{min}\)</span>: 0.990 and 0.890.</p>
+<p>If local difficulty is encountered, linear interpolation will be
+adopted, space between two consecutive points will be divided into
+<span class="math notranslate nohighlight">\(N_{min}\)</span> pieces. If the difficulty is still not solved,
+<span class="math notranslate nohighlight">\(N_{min}\)</span> will be increased up to <span class="math notranslate nohighlight">\(N_{max}\)</span>. Recommended
+values for <span class="math notranslate nohighlight">\(N_{min}\)</span> and <span class="math notranslate nohighlight">\(N_{max}\)</span>: 30 and 200.</p>
+<p>If the DMO could not get through for a specific point due to the
+following reasons:</p>
+<ul class="simple">
+<li><p>Change of symmetry of reaction complex, e.g. linear
+<span class="math notranslate nohighlight">\(\rightarrow\)</span> non-linear</p></li>
+<li><p>Discontinuity of reaction path</p></li>
+<li><p>Failure of reaction path following close to local minimum region</p></li>
+</ul>
+<p>one solution to circumvent this problem is to calculate and re-order the
+vibrational frequencies for a specific region of reaction path. This
+function could be activated by setting <span class="math notranslate nohighlight">\(IO_{cut}\)</span> to 1. In this
+way, the reaction path with its <span class="math notranslate nohighlight">\(\mathbf{s}\)</span> value ranging from
+<span class="math notranslate nohighlight">\(s_{start}\)</span> to <span class="math notranslate nohighlight">\(s_{end}\)</span> will have vibrational frequencies
+calculated.</p>
+<p>In some situations, due to the innate difficulty of path following
+algorithm, the DMO might fail at the transition state(TS) point. And
+also the first point off TS point in either forward or reverse direction
+might also lead to problems. In order to remediate this problem, we can
+skip a few points in that region by setting <span class="math notranslate nohighlight">\(IO_{skip}\)</span> to 1. If
+one point off the TS point in reverse(or forward) direction also needs
+to be skipped, <span class="math notranslate nohighlight">\(N_{left}\)</span>( or <span class="math notranslate nohighlight">\(N_{right}\)</span>) should be set
+to 1.</p>
+<p><code class="docutils literal notranslate"><span class="pre">\</span> <span class="pre">``DMO</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">\</span> <span class="pre">``Sthresh</span> <span class="pre">=</span></code><span class="math notranslate nohighlight">\(s_{max}\)</span></p>
+<p><code class="docutils literal notranslate"><span class="pre">\</span> <span class="pre">``Slowest</span> <span class="pre">=</span></code><span class="math notranslate nohighlight">\(s_{min}\)</span></p>
+<p><code class="docutils literal notranslate"><span class="pre">\</span> <span class="pre">``Np</span> <span class="pre">=</span></code><span class="math notranslate nohighlight">\(N_{min}\)</span></p>
+<p><code class="docutils literal notranslate"><span class="pre">\</span> <span class="pre">``NMax</span> <span class="pre">=</span></code><span class="math notranslate nohighlight">\(N_{max}\)</span></p>
+<p><code class="docutils literal notranslate"><span class="pre">\</span> <span class="pre">``Cut</span> <span class="pre">=</span></code><span class="math notranslate nohighlight">\(IO_{cut}\)</span></p>
+<p><code class="docutils literal notranslate"><span class="pre">\</span> <span class="pre">``CutA</span> <span class="pre">=</span></code><span class="math notranslate nohighlight">\(s_{start}\)</span></p>
+<p><code class="docutils literal notranslate"><span class="pre">\</span> <span class="pre">``CutB</span> <span class="pre">=</span></code><span class="math notranslate nohighlight">\(s_{end}\)</span></p>
+<p><code class="docutils literal notranslate"><span class="pre">\</span> <span class="pre">``Skip</span> <span class="pre">=</span></code><span class="math notranslate nohighlight">\(IO_{skip}\)</span></p>
+<p><code class="docutils literal notranslate"><span class="pre">\</span> <span class="pre">``SkipA</span> <span class="pre">=</span></code><span class="math notranslate nohighlight">\(N_{left}\)</span></p>
+<p><code class="docutils literal notranslate"><span class="pre">\</span> <span class="pre">``SkipB</span> <span class="pre">=</span></code><span class="math notranslate nohighlight">\(N_{right}\)</span></p>
+<p><code class="docutils literal notranslate"><span class="pre">\</span> <span class="pre">``END</span> <span class="pre">DMO</span></code></p>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="1.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Before we start</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="3.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Output description</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#input-browsing-data-files">Input Browsing Data Files</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#keyword-input">Keyword input</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#datafiletype-keyword"><code class="docutils literal notranslate"><span class="pre">@DATAFILETYPE</span></code> keyword</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#datafilepath-keyword"><code class="docutils literal notranslate"><span class="pre">@DATAFILEPATH</span></code> keyword</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#energy-keyword"><code class="docutils literal notranslate"><span class="pre">@ENERGY</span></code> keyword</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#parm-keyword"><code class="docutils literal notranslate"><span class="pre">@PARM</span></code> keyword</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#vibration-keyword"><code class="docutils literal notranslate"><span class="pre">@VIBRATION</span></code> keyword</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dircurv-keyword"><code class="docutils literal notranslate"><span class="pre">@DIRCURV</span></code> keyword</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#avam-keyword"><code class="docutils literal notranslate"><span class="pre">@AVAM</span></code> keyword</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#curvcpl-keyword"><code class="docutils literal notranslate"><span class="pre">@CURVCPL</span></code> keyword</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#coriolis-keyword"><code class="docutils literal notranslate"><span class="pre">@CORIOLIS</span></code> keyword</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#adiabfc-keyword"><code class="docutils literal notranslate"><span class="pre">@ADIABFC</span></code> keyword</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#section-input">Section input</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#title-section"><code class="docutils literal notranslate"><span class="pre">TITLE</span></code> section</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#parameter-section"><code class="docutils literal notranslate"><span class="pre">PARAMETER</span></code> section</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#curvcor-section"><code class="docutils literal notranslate"><span class="pre">CURVCOR</span></code> section</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#autosmth-section"><code class="docutils literal notranslate"><span class="pre">AUTOSMTH</span></code> section</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rmspk-section"><code class="docutils literal notranslate"><span class="pre">RMSPK</span></code> section</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dmo-section"><code class="docutils literal notranslate"><span class="pre">DMO</span></code> section</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Southern Methodist University (SMU) and Elfi Kraka
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2024.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
