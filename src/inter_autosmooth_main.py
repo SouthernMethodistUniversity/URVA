@@ -16,7 +16,7 @@
 #   2.b Correct the central region
 #
 # Note: This script drops most error handles...
-#       This script is expected to incorporate into pURVA.
+#       This script is expected to incorporate into URVA.
 
 import sys
 from scipy import optimize
